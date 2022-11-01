@@ -1,9 +1,0 @@
-number,text,logical
-1,A,TRUE
-2,B,TRUE
-4,NULL,TRUE
-6,E,FALSE
-NULL,F,FALSE
-8,G,TRUE
-9,M,NULL
-11,Q,FALSE
