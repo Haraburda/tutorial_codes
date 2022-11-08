@@ -1,0 +1,183 @@
+---
+title: "Liquid Density Predictions"
+author: "Scott Haraburda"
+date: "June 9, 1994"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+
+#####Make sure you load any required packages.
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE)
+
+```
+
+## Purpose.
+
+To predict liquid densities using equations for the Rackett and Bhirud correlation methods. Examples include water and hexane, a polar and non-polar chemical respectively.
+
+## Density
+Densities for pure liquid chemicals are important for designing equipment intended for storage and transport of liquids.  The volume of liquids are not constant, as they change with temperature.  Thus, an equation predicting the density of a liquid would be useful.  The following method provides a useful way to develop an equation for predicting densities over a range of different temperatures.  This method will require either known critical properties (temperature, pressure, compressibility, and volume) or known density values for the chemical liquid being used.  Two estimation and two curve-fitting techniques will be demonstrated.  The chemical being used as an example will be water.
+
+<div align="center">
+$$\begin{equation}
+  Vapor Pressure = 10^{(A-\frac{B}{T+C})}
+\end{equation}$$
+</div>
+
+<div align="center">
+```{r image0,fig.align="center", echo=FALSE}
+####Add Image of data
+#knitr::include_graphics("CurveFit1.png")
+```
+</div>
+
+<u>Water Example</u>. The known data points for water could be found in may popular chemical reference books.  The data provided below (in grams per cubic centimeter) came from <i>Lange's Handbook of Chemistry</i>^[Dean, John A. (1985), <u>Lange's Handbook of Chemistry</u>, 13th ed., McGraw-Hill Book Co: New York. See Table 10-28]. The temperature unit from this table (Celsius) is converted to Kelvin by adding 273.15 to it.
+
+```{r ChE1,fig.align="center", echo=TRUE, warning = FALSE, message=FALSE}
+if (!require("pacman")) install.packages("pacman")
+pacman::p_load(flextable, ggplot2, tidyverse)
+temperature <- seq(0,100,10) + 273.15              # converted to Kelvin
+rho <- c(0.99984, 0.99970, 0.99820, 0.99565, 0.99222, 0.98804, 
+         0.98320, 0.97777, 0.97179, 0.96531, 0.95836)
+df_act <- as.data.frame(cbind(temperature, rho))
+#
+# create a flextable
+#
+ft <- flextable(df_act) %>%
+  theme_vanilla() %>%
+  set_caption(caption = as_paragraph(
+    as_b("Water Densities (actual)")))
+ft
+```
+
+## Rackett Method
+A quick estimation for the density could be done by using a generalized equation.  A popular equation is the Rackett equation.  This equation requires the use of the following critical values^[Smith, Joe M. and Van Ness, Hendrick C. (1987), <u>Introduction to Chemical Engineering Thermodynamics</u>, 4th ed., McGraw-Hill Book Co: New York. See Appendix B].  The Rackett equation uses a reduced temperature, which is the temperature of interest divided by the critical temperature (Tr).
+
+* <b>Critical Molar Volume (V~c~)</b>: 56 cubic centimeters
+* <b>Critical Compressibility (Z~c~)</b>: 0.229
+* <b>Critical Temperature (T~c~)</b>: 647.3 Kelvin
+* <b>Molar Mass(MM)</b>: 18 grams
+
+The following is the Rackett equation
+
+<div align="center">
+$$\begin{equation}
+  \rho = \frac {MM}{V_{c}Z_{c}^{[(1-Tr_{i})^{0.2857}]}}
+\end{equation}$$
+</div>
+
+The following table lists the estimated density values for this estimation.
+
+```{r ChE2,fig.align="center", echo=TRUE, warning = FALSE, message=FALSE}
+Vc <- 56
+Zc <- 0.229
+Tc <- 647.3
+MM <- 18
+Tr <- df_act$temperature/Tc
+rho_est <- MM / (Vc * Zc^((1-Tr)^0.2857))
+df_est <- cbind(df_act, rho_est)
+df_est$delta <- round((df_est$rho - df_est$rho_est), 4)
+df_est$rho_est <- round(df_est$rho_est, 4)
+#
+
+# create a flextable
+#
+ft <- flextable(df_est) %>%
+  bg(i=1, j=3:4, bg="orange", part="header") %>%
+  bg(j=3:4, bg="orange", part="body") %>%
+#  highlight(j=3:4, color="orange", part="body") %>%
+#  color(j=3:4, color = "orange") %>%
+  theme_vanilla() %>%
+  set_caption(caption = as_paragraph(
+    as_b("Water Densities (actual vs. "),
+    colorize(as_b("estimate"), color="darkorange"),
+    colorize(as_b(")"), color="black")))
+ft
+```
+
+## Bhirud Correlation Method
+Another quick estimation for the density could be done by using another generalized equation.  This other (less popular) equation is that of a correlation proposed by V.L. Bhirud in 1979^[Bhirud, Vasant L. (1978). "Saturated liquid densities of normal fluids," <i>AICHE Journal</i> 24:1127-1131].  This equation is very useful for non-polar compounds only.  This equation requires the use of the critical values.
+
+* <b>Critical Pressure (P~c~)</b>: 223.5 atm
+* <b>Eccentric Factor (\omega)</b>: 0.344
+* <b>Gas Constant (R)</b>: 82.056 cubic centimeters * atm / Kelvin
+
+The following are two empirically-derived values that use the reduced temperatures.
+
+<div align="center">
+$$\begin{equation}
+  \left[ \begin{array}{ccc}  X_{i}, Y_{i}] \end{array} \right] =
+  \left[ \begin{array}{ccc} 1.39644 & 1 & -24.076 & 102.615 & -255.719 &
+    355.805 & -256.671 & 75.1088 \\ 
+    13.4412 &  0 & -135.7437 & 533.38 & -1091.453 & 1231.43 & -728.227 &
+    176.737 \end{array} \right] * 
+  \left[ \begin{array}{ccc} 1 \\ ln(Tr_{i}) \\ Tr_{i} \\ Tr_{i}^2 \\ Tr_{i}^3 \\
+    Tr_{i}^4 \\ Tr_{i}^5 \\ Tr_{i}^6  \end{array} \right]
+\end{equation}$$
+</div>
+
+```{r ChE3,fig.align="center", echo=TRUE, warning = FALSE, message=FALSE}
+M <- 11
+Pc <- 223.5
+omega <- 0.344
+R <- 82.056
+matrix_data <- c(1.39644, 1, -24.076, 102.615, -255.719, 355.805, -256.671, 75.1088,
+                 13.4412,  0, -135.7437, 533.38, -1091.453, 1231.43, -728.227, 176.737)
+matrix_coef <- matrix(matrix_data, nrow=2, byrow=TRUE)
+rho_b <- 0
+for (i in 1:M) {
+  matrix_Tr <- c(1, log(Tr[i]), Tr[i], Tr[i]^2, Tr[i]^3, Tr[i]^4, Tr[i]^5, Tr[i]^6)
+  XY <- matrix_coef %*% matrix_Tr
+  bhirud <- Pc*MM/R/Tc*exp(-(XY[1,] + omega*XY[2,]))
+  rho_b <- c(rho_b, bhirud)
+}
+rho_b <- round(rho_b[-1], 4)
+df_est <- cbind(df_est, rho_b)
+df_est$delta_b <- round(df_est$rho - df_est$rho_b, 4)
+#
+# create a flextable
+#
+ft <- flextable(df_est) %>%
+  bg(i=1, j=3:4, bg="orange", part="header") %>%
+  bg(j=3:4, bg="orange", part="body") %>%
+  bg(i=1, j=5:6, bg="skyblue", part="header") %>%
+  bg(j=5:6, bg="skyblue", part="body") %>%
+  theme_vanilla() %>%
+  set_caption(caption = as_paragraph(
+    as_b("Water Densities (actual vs. "),
+    colorize(as_b("estimate"), color="darkorange"),
+    colorize(as_b(" vs. "), color="black"),
+    colorize(as_b("Bhirud"), color="blue"),
+    colorize(as_b(")"), color="black")))
+ft
+```
+
+<u>Hexane Example.</u>
+The results of this calculation are quite different than that for water, with an error over 10%. Using hexane, a non-polar compound with the following critical parameters (Smith appendix B), the result of the calculation would be much closer to the actual one.  The following are the critical values for this chemical
+
+* <b>Critical Pressure (P~c~)</b>: 30.1 atm
+* <b>Eccentric Factor (\omega)</b>: 0.296
+* <b>Critical Temperature (T~c~)</b>: 507.4 Kelvin
+* <b>Molar Mass(MM)</b>: 86.18 grams
+
+The following is the density of hexane at a temperature of 20 degrees Celsius (or 293.15 Kelvin)
+
+```{r ChE4,fig.align="center", echo=TRUE, warning = FALSE, message=FALSE}
+MM <- 86.18
+Pc <- 30.1
+omega <- 0.296
+Tc <- 507.4
+Th <- 20
+Tr <- (Th+273.15) / Tc
+matrix_Tr <- c(1, log(Tr), Tr, Tr^2, Tr^3, Tr^4, Tr^5, Tr^6)
+XY <- matrix_coef %*% matrix_Tr
+rho_hexane <- Pc*MM/R/Tc*exp(-(XY[1,] + omega*XY[2,]))
+rho_hexane <- round(rho_hexane, 4)
+print(paste("The density of hexane at",Th,"degrees Celsius is", rho_hexane,
+            "grams per cubic centimeter."))
+```
+
+The actual density of hexane at this temperature is 0.6594 grams per cubic centimeter^[Dean (1985). See Table 7-15].  This has an error of about 1%, which confirms that this method should only be used for non-polar compounds
+
+# Notes
