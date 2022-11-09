@@ -1,0 +1,57 @@
+source,target,IDsource,IDtarget,value,linkgroup
+2016,Direct,0,4,800,A
+2016,Indirect,0,5,300,A
+2017,Direct,1,4,500,A
+2017,Indirect,1,5,400,A
+2018,Direct,2,4,600,A
+2018,Indirect,2,5,400,A
+2019,Direct,3,4,300,A
+2019,Indirect,3,5,500,A
+Direct,Unit 1 - Direct,4,6,300,B
+Direct,Unit 2 - Direct,4,7,430,B
+Direct,Unit 3 - Direct,4,8,670,B
+Direct,Unit 4 - Direct,4,9,800,B
+Indirect,Unit 1 - Indirect,5,10,330,C
+Indirect,Unit 2 - Indirect,5,11,540,C
+Indirect,Unit 3 - Indirect,5,12,230,C
+Indirect,Unit 4 - Indirect,5,13,500,C
+Unit 1 - Direct,Labor - Direct,6,14,50,D
+Unit 1 - Direct,Travel - Direct,6,15,0,D
+Unit 1 - Direct,Supplies/Material - Direct,6,16,200,D
+Unit 1 - Direct,Equipment - Direct,6,17,50,D
+Unit 1 - Direct,Other - Direct,6,18,0,D
+Unit 2 - Direct,Labor - Direct,7,14,250,D
+Unit 2 - Direct,Travel - Direct,7,15,30,D
+Unit 2 - Direct,Supplies/Material - Direct,7,16,0,D
+Unit 2 - Direct,Equipment - Direct,7,17,150,D
+Unit 2 - Direct,Other - Direct,7,18,0,D
+Unit 3 - Direct,Labor - Direct,8,14,300,D
+Unit 3 - Direct,Travel - Direct,8,15,20,D
+Unit 3 - Direct,Supplies/Material - Direct,8,16,150,D
+Unit 3 - Direct,Equipment - Direct,8,17,200,D
+Unit 3 - Direct,Other - Direct,8,18,0,D
+Unit 4 - Direct,Labor - Direct,9,14,400,D
+Unit 4 - Direct,Travel - Direct,9,15,0,D
+Unit 4 - Direct,Supplies/Material - Direct,9,16,250,D
+Unit 4 - Direct,Equipment - Direct,9,17,0,D
+Unit 4 - Direct,Other - Direct,9,18,150,D
+Unit 1 - Indirect,Labor - Indirect,10,19,100,E
+Unit 1 - Indirect,Travel - Indirect,10,20,0,E
+Unit 1 - Indirect,Supplies/Material - Indirect,10,21,160,E
+Unit 1 - Indirect,Equipment - Indirect,10,22,50,E
+Unit 1 - Indirect,Other - Indirect,10,23,20,E
+Unit 2 - Indirect,Labor - Indirect,11,19,200,E
+Unit 2 - Indirect,Travel - Indirect,11,20,30,E
+Unit 2 - Indirect,Supplies/Material - Indirect,11,21,0,E
+Unit 2 - Indirect,Equipment - Indirect,11,22,250,E
+Unit 2 - Indirect,Other - Indirect,11,23,60,E
+Unit 3 - Indirect,Labor - Indirect,12,19,100,E
+Unit 3 - Indirect,Travel - Indirect,12,20,0,E
+Unit 3 - Indirect,Supplies/Material - Indirect,12,21,0,E
+Unit 3 - Indirect,Equipment - Indirect,12,22,80,E
+Unit 3 - Indirect,Other - Indirect,12,23,50,E
+Unit 4 - Indirect,Labor - Indirect,13,19,300,E
+Unit 4 - Indirect,Travel - Indirect,13,20,20,E
+Unit 4 - Indirect,Supplies/Material - Indirect,13,21,40,E
+Unit 4 - Indirect,Equipment - Indirect,13,22,120,E
+Unit 4 - Indirect,Other - Indirect,13,23,20,E

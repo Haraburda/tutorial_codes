@@ -1,0 +1,38 @@
+source,target,IDsource,IDtarget,value,linkgroup
+Supplier 1,Supply 1,0,5,36.349,A
+Supplier 1,Supply 2,0,6,52.718,A
+Supplier 1,Supply 3,0,7,3.012,A
+Supplier 1,Supply 4,0,8,0.068,A
+Supplier 1,Supply 5,0,9,3.164,A
+Supplier 2,Supply 1,1,5,0.687,A
+Supplier 2,Supply 2,1,6,12.869,A
+Supplier 2,Supply 4,1,8,2.131,A
+Supplier 2,Supply 5,1,9,2.444,A
+Supplier 3,Supply 1,2,5,0.032,A
+Supplier 3,Supply 2,2,6,0.43,A
+Supplier 3,Supply 4,2,8,0.042,A
+Supplier 3,Supply 5,2,9,0.241,A
+Supplier 4,Supply 1,3,5,0.157,A
+Supplier 5,Supply 2,3,6,2.731,A
+Supplier 5,Supply 5,3,9,1.705,A
+Supplier 5,Supply 2,4,6,0.259,A
+Supplier 5,Supply 4,4,8,0.001,A
+Supplier 5,Supply 6,4,10,0.869,A
+Supply 1,Company,5,11,37.225,B
+Supply 2,Company,6,11,69.007,B
+Supply 3,Company,7,11,3.012,B
+Supply 4,Company,8,11,2.242,B
+Supply 5,Company,9,11,7.554,B
+Supply 6,Company,10,11,0.869,B
+Company,Operation 1,11,12,37.822,C
+Company,Operation 2,11,13,80.688,C
+Company,Other,11,23,1.399,C
+Operation 1,Customer 6,12,19,0.647,D
+Operation 1,Customer 7,12,20,4.294,D
+Operation 1,Customer 8,12,21,27.048,D
+Operation 1,Customer 9,12,22,5.833,D
+Operation 2,Customer 1,13,14,6.897,D
+Operation 2,Customer 2,13,15,22.341,D
+Operation 2,Customer 3,13,16,10.022,D
+Operation 2,Customer 4,13,17,23.487,D
+Operation 2,Customer 5,13,18,17.941,D
