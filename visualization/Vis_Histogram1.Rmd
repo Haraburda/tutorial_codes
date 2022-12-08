@@ -1,0 +1,56 @@
+---
+title: "Histogram Plot with Normal Distribution Curve"
+author: "Scott Haraburda"
+date: "September 20, 2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+
+#####Make sure you load any required packages.
+
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE)
+```
+
+
+## Purpose.
+To portray a graphical representation of data using a histogram and a normal distribution curve (frequency weighted).
+
+
+## Histogram of a set of Data
+The following script creates a histogram plot of 147 data points ranging from 10 to 72. This code doesn't require the use of additional R libraries.
+
+```{r Vis1,fig.align="center", echo=TRUE, warning = FALSE, message=FALSE}
+h <- c(72, 71, 61, 55, 47, 49, 63, 59, 46, 62, 45, 36, 48, 28, 22, 52, 20, 33, 21, 22, 26, 38, 32, 49, 37, 30, 24, 38, 23, 27, 29, 36, 19, 10, 23, 16, 21, 13, 10, 13, 15, 23, 15, 29, 39, 18, 22, 42, 15, 25, 25, 33, 35, 54, 22, 33, 24, 33, 34, 22, 43, 43, 13, 18, 14, 14, 20, 18, 35, 33, 32, 37, 25, 34, 32, 34, 44, 53, 50, 45, 46, 12, 55, 15, 36, 43, 40, 26, 39, 17, 14, 33, 30, 36, 32, 25, 45, 30, 30, 29, 33, 25, 31, 15, 58, 67, 24, 28, 39, 25, 13, 19, 45, 12, 24, 25, 25, 20, 21, 43, 56, 53, 31, 20, 12, 19, 13, 17, 39, 24, 25, 12, 18, 10, 15, 30, 42, 21, 42, 19, 33, 45, 36, 25, 30, 34, 30)
+
+par(mfrow=c(1,2))       # To create a visualization of two plots at once.
+hist(h)                 # The generic code for generating a histogram.
+
+#
+#   Creation of modified histogram plot, breaking data into groups of 8.
+#
+v <- hist(h, breaks=seq(0, 96, by=8), plot=F)
+
+#
+#   Modified histogram plot.
+#
+plot(v, col = heat.colors(length(v$mids))[length(v$count)-rank(v$count)+1],
+   ylim = c(0, max(v$count)+5),
+   main="Modified Histogram of h",
+   sub="Counts above bar, Actual values in rug plot",
+   cex.sub=0.75, col.lab="blue",
+   font.main=2, font.lab=4, font.sub=3)
+rug(h)                                  # tick marks along the base of plot
+text(v$mids, v$count, v$count, pos=3)   # quantities of group data points
+
+#
+#   Addition of a normal distribution curve to graph
+#
+xfit <- seq(min(h),max(h),length=40) 
+yfit <- dnorm(xfit,mean=mean(h),sd=sd(h)) 
+yfit <- yfit*diff(v$mids[1:2])*length(h) 
+lines(xfit, yfit, col="blue", lwd=2)
+
+```
+
+This example plotted two different histograms using the same data.  The first plot was the generic hist() plot with no additional processing of the data nor modifications to the chart.  The second plot included addition of a sub-title (bottom) and rug of actual data points, along with changes in the text fonts and bar colors.  This second plot also included a normal distribution curve added to the histogram.  In the code, the possible values for the font style are: 1 (normal text), 2 (<b>bold</b>), 3 (<i>italic</i>), 4 (<b><i>bold and italic</i></b>), and 5 (symbol font, such as a diamond [&#11045;]).  Please note that the ggplot2 library could add more functionality to graphical plots for more complex analyses.  However, the above two graphs provided a comparison between the basic hist() function and the more complex coding in the modified histogram example provided.
