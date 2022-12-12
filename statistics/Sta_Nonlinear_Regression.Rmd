@@ -1,0 +1,169 @@
+---
+title: "Nonlinear Regression of Data"
+author: "Scott Haraburda"
+date: "September 24, 2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+
+#####Make sure you load any required packages.
+
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE)
+```
+
+
+## Purpose.
+
+To conduct non-linear regression plots of data along with cross-validation metrics to assess concerns regarding potential overfitting in the model. This example contains 101 data points.
+
+
+```{r Sta1,fig.align="center", echo=TRUE, warning = FALSE, message=FALSE}
+if (!require("pacman")) install.packages("pacman")
+pacman::p_load(caret, flextable, ggplot2, tidyverse)
+#
+#  Create list of data points
+#
+x <- seq(0:100)
+y <- c(9.19155614, 18.32589818, 16.11472562, 10.38639646, 17.341043, 12.67482127, 17.25306084, 18.30533624, 17.92956579, 17.39014953, 16.12457703, 16.04125406, 18.99848443, 15.77275963, 17.98099651, 18.6787152, 20.75051407, 19.51236449, 19.64527429, 18.43511202, 18.15506508, 21.78660702, 20.08193594, 22.63018534, 22.33853763, 23.72475531, 20.26957635, 24.01468268, 23.64465856, 22.33818192, 22.91150457, 23.59520379, 23.95075473, 26.81721325, 24.61637561, 28.42358924, 28.73368436, 25.61214326, 29.23317181, 26.18167118, 27.73285607, 30.15887304, 31.33547248, 31.86544334, 29.17451689, 31.0219986, 31.25664241, 34.15135027, 33.5186563, 35.75591929, 33.84713705, 37.1243428, 38.15238742, 34.48742946, 36.37733836, 40.59607232, 39.4136187, 41.83267772, 39.57293157, 40.92331302, 42.42281004, 42.37866343, 42.02827938, 44.23205516, 43.67038084, 48.81087272, 47.05757352, 50.85637026, 49.70258211, 51.743666, 53.34491253, 52.38223306, 51.3256578, 53.1420769, 57.04597575, 55.24113038, 58.21098249, 61.04704254, 61.83300509, 59.2780969, 64.54019449, 65.4386274, 66.66481516, 64.32969943, 65.96784284, 71.21475756, 68.45972818, 70.62460574, 71.015842, 73.17477735, 76.41988092, 78.11346704, 79.29557682, 80.0930548, 83.55498221, 84.39043855, 92.49059468, 85.8571274, 91.43903357, 88.21954854, 99.64588377)
+df1 <- data.frame (x,y)     # Create data frame from these two lists
+#
+#  Create multiplot function
+#
+multiplot <- function(..., plotlist=NULL, file, cols=1, layout=NULL) {
+  require(grid)
+  plots <- c(list(...), plotlist)
+  numPlots = length(plots)
+  if (is.null(layout)) {
+    layout <- matrix(seq(1, cols * ceiling(numPlots/cols)),
+                    ncol = cols, nrow = ceiling(numPlots/cols))
+  }
+ if (numPlots==1) {
+    print(plots[[1]])
+  } else {
+    grid.newpage()
+    pushViewport(viewport(layout = grid.layout(nrow(layout), ncol(layout))))
+    for (i in 1:numPlots) {
+       matchidx <- as.data.frame(which(layout == i, arr.ind = TRUE))
+      print(plots[[i]], vp = viewport(layout.pos.row = matchidx$row,
+                                      layout.pos.col = matchidx$col))
+    }
+  }
+}
+#
+#  Calculate linear regression and plot from data
+#
+m <- lm(y~x)
+a <- signif(coef(m)[1], digits = 2)
+b <- signif(coef(m)[2], digits = 2)
+textlab <- paste("y = ",b,"x + ",a, sep="")
+plot1 <- ggplot(df1, aes(x, y)) +
+  ggtitle("Linear regression") + 
+  geom_point() +
+  geom_smooth(method="lm", 
+              se=FALSE,
+              formula = y ~ x) +
+  geom_text(aes(x = 30, y = 75, label = textlab),
+            color="black", size=5, parse = FALSE) +
+  theme(plot.title = element_text(color="#0000FF", 
+                                  face="bold", 
+                                  size=22, 
+                                  hjust=0.5),
+        axis.title.x = element_text(size=14, 
+                                    face="bold", 
+                                    color="black"),
+        axis.title.y = element_text(angle=0,
+                                    size=14, 
+                                    face="bold", 
+                                    color="black"),
+        axis.text.x = element_text(hjust = 1, 
+                                   face="bold",
+                                   color="black",
+                                   size=12),
+        axis.text.y = element_text(angle=0,
+                                   vjust = 1, 
+                                   face="bold",
+                                   color="black",
+                                   size=12),
+        panel.background = element_blank())
+
+#
+#  Calculate non-linear regression and plot from data
+#
+mn <- nls(y~a*exp(b*x),
+          start=list(a=1,b=.1))
+a <- signif(coef(mn)[1], digits = 2)
+b <- signif(coef(mn)[2], digits = 2)
+textlabn <- paste("y = ",a,"e^",b, "x")
+plot2 <- ggplot(df1, aes(x, y)) +
+  ggtitle("Nonlinear regression") + 
+  geom_point() +
+  geom_smooth(method="lm", 
+              se=FALSE,
+              formula = y ~ splines::bs(x, 3)) +
+  geom_text(aes(x = 30, y = 75, label = textlabn),
+            color="black", size=5, parse = FALSE) +
+  theme(plot.title = element_text(color="#0000FF", 
+                                  face="bold", 
+                                  size=22, 
+                                  hjust=0.5),
+        axis.title.x = element_text(size=14, 
+                                    face="bold", 
+                                    color="black"),
+        axis.title.y = element_text(angle=0,
+                                    size=14, 
+                                    face="bold", 
+                                    color="black"),
+        axis.text.x = element_text(hjust = 1, 
+                                   face="bold",
+                                   color="black",
+                                   size=12),
+        axis.text.y = element_text(angle=0,
+                                   vjust = 1, 
+                                   face="bold",
+                                   color="black",
+                                   size=12),
+        panel.background = element_blank())
+
+multiplot(plot1, plot2, cols=2)     # plot both graphs side-by-side
+```
+
+As can be seen from the above two plots, the nonlinear regression model does a better job modeling the function of x. A word of caution is that nonlinear regression models are highly flexible and can fit any data to perfection.  As a result, these regressions could overfit the data and not be reflective of the population.
+
+## Cross Validation
+To know whether the designed regression model is valid, we must test it against those data points which were not present during the training of the model. This creates the following regression model evaluation metrics:
+
+* <u>R-squared (R2):</u> For values ranging from 0 to 1, this represents how well the values fit the original values with higher values representing a better-fit model.
+* <u>Root Mean Squared Error (RMSE):</u> This is the square root of the differences between the original and the predicted values extracted by the square of the average difference over the data.
+* <u>Mean Absolute Error (MAE):</u> This represents the difference between the original and predicted values extracted by the average of the absolute difference over the data.
+
+```{r Sta2,fig.align="center", echo=TRUE, warning = FALSE, message=FALSE}
+set.seed(123)
+train_size <- 0.5     # partition 50% of data
+train_ind <- sample(seq_len(nrow(df1)), 
+                    size = train_size * nrow(df1))
+train <- df1[train_ind, ]
+test <- df1[-train_ind, ]
+model <- lm(y~x, data=train)
+prediction <- predict(model, test)
+model_val <- data.frame(Model = "linear",
+                        R2 = R2(prediction, test$y),
+                        RMSE = RMSE(prediction, test$y),
+                        MAE = MAE(prediction, test$y))
+modeln <- nls(y~a*exp(b*x),
+              data = train,
+              start=list(a=1,b=.1))
+prediction <- predict(modeln, test)
+model_valn <- data.frame(Model = "nonlinear",
+                        R2 = R2(prediction, test$y),
+                        RMSE = RMSE(prediction, test$y),
+                        MAE = MAE(prediction, test$y))
+df_cross_val <- as.data.frame(rbind(model_val, model_valn))
+ft <- flextable(df_cross_val) %>%
+  theme_vanilla() %>%
+  set_caption(caption = as_paragraph(
+    as_b("Cross Validation Metrics")))
+ft
+```
+
+Based upon the cross-validation metrics, the non-linear model is not only much better than the linear regression, the R2 indicates a high fit of the data in the test test.  Also, the RMSE and MAE values indicates that the model errors are approaching zero and suggests that overfitting is not an issue in this model.
