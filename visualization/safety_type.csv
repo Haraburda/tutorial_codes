@@ -1,0 +1,19 @@
+severity,type
+DAC,C
+Equipment Fault,NM
+Fatality,A
+First Aid,E
+Job Transfer or Restriction ,D
+JToRC,D
+Medical Treatment or Prescription ,D
+Near Miss,NM
+ORC,D
+PPD,B
+PTD,A
+Property Damage ,NM
+Property Damage - Class A,A
+Property Damage - Class B,B
+Property Damage - Class C,C
+Property Damage - Class D,D
+Property Damage - Class E,E
+Property Damage - Less than Class E; Not Army (EOD),NA

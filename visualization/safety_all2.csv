@@ -1,0 +1,735 @@
+unit,date,location,event
+B,1/29/2014 7:20,170,Violence or Other Injuries by Animals or People
+B,1/30/2014 15:30,86,Contact with Objects or Equipment
+B,2/19/2014 11:15,94,Transportation Incidents
+B,3/10/2014 14:00,162,Overexertion and Bodily Reaction
+B,7/1/2014 16:25,157,Violence or Other Injuries by Animals or People
+B,8/25/2014 12:45,148,Contact with Objects or Equipment
+B,8/25/2014 13:40,108,Contact with Objects or Equipment
+B,9/2/2014 15:50,67,Transportation Incidents
+B,9/4/2014 10:55,157,Contact with Objects or Equipment
+B,10/6/2014 15:40,148,Contact with Objects or Equipment
+B,10/14/2014 6:00,157,Mechanical Failures
+A,10/14/2014 11:00,4,Exposure to Harmful Substances or Environments
+B,10/21/2014 11:00,61,"Slips, Trips, and Falls"
+B,10/22/2014 6:00,157,Mechanical Failures
+B,10/27/2014 13:10,134,Overexertion and Bodily Reaction
+B,11/6/2014 10:10,161,Fires and Explosions
+B,11/19/2014 11:00,162,Mechanical Failures
+B,11/20/2014 14:00,148,Fires and Explosions
+B,11/21/2014 10:00,162,Mechanical Failures
+B,11/25/2014 13:45,161,"Slips, Trips, and Falls"
+B,11/26/2014 8:15,116,Contact with Objects or Equipment
+A,12/2/2014 7:10,11,Contact with Objects or Equipment
+A,12/11/2014 13:30,159,Fires and Explosions
+A,12/18/2014 15:00,10,Contact with Objects or Equipment
+B,12/19/2014 10:30,136,Transportation Incidents
+A,1/7/2015 13:50,10,Overexertion and Bodily Reaction
+A,1/30/2015 11:15,164,Fires and Explosions
+B,2/2/2015 7:45,112,Contact with Objects or Equipment
+B,2/19/2015 11:15,94,Transportation Incidents
+A,2/25/2015 11:15,10,Mechanical Failures
+A,3/3/2015 17:00,175,"Slips, Trips, and Falls"
+B,3/4/2015 8:00,175,Transportation Incidents
+A,3/18/2015 6:30,12,Contact with Objects or Equipment
+A,3/19/2015 7:00,6,Transportation Incidents
+A,4/9/2015 12:00,11,Overexertion and Bodily Reaction
+A,4/10/2015 14:00,14,Contact with Objects or Equipment
+A,4/15/2015 11:40,5,Mechanical Failures
+A,4/21/2015 7:20,141,Overexertion and Bodily Reaction
+A,4/29/2015 15:00,14,Fires and Explosions
+B,5/6/2015 11:00,175,Violence or Other Injuries by Animals or People
+A,5/11/2015 17:00,141,Mechanical Failures
+A,5/18/2015 8:55,17,Fires and Explosions
+A,5/28/2015 11:00,141,Mechanical Failures
+A,5/28/2015 11:00,5,Mechanical Failures
+A,6/3/2015 16:30,7,Transportation Incidents
+B,6/5/2015 10:30,121,"Slips, Trips, and Falls"
+A,6/5/2015 11:30,141,Mechanical Failures
+A,6/10/2015 14:00,5,Mechanical Failures
+A,6/12/2015 13:35,5,Mechanical Failures
+A,6/23/2015 9:50,7,Violence or Other Injuries by Animals or People
+B,6/24/2015 8:45,8,Fires and Explosions
+B,6/24/2015 9:30,162,Transportation Incidents
+B,6/30/2015 11:25,175,Contact with Objects or Equipment
+A,7/1/2015 11:05,4,Contact with Objects or Equipment
+A,7/7/2015 13:30,21,Contact with Objects or Equipment
+B,7/13/2015 16:00,83,Contact with Objects or Equipment
+B,7/14/2015 14:00,55,Contact with Objects or Equipment
+A,7/15/2015 7:00,163,Contact with Objects or Equipment
+A,7/15/2015 7:40,19,Exposure to Harmful Substances or Environments
+A,7/17/2015 9:10,7,Contact with Objects or Equipment
+A,7/17/2015 12:15,22,Contact with Objects or Equipment
+A,7/20/2015 10:40,10,Exposure to Harmful Substances or Environments
+A,7/22/2015 14:55,13,Exposure to Harmful Substances or Environments
+B,7/29/2015 8:15,148,Contact with Objects or Equipment
+A,7/29/2015 9:00,10,Contact with Objects or Equipment
+A,8/3/2015 23:30,163,Exposure to Harmful Substances or Environments
+B,8/4/2015 10:50,148,Contact with Objects or Equipment
+A,8/5/2015 8:45,5,Fires and Explosions
+A,8/19/2015 10:35,172,Contact with Objects or Equipment
+A,8/27/2015 12:10,18,Fires and Explosions
+B,9/8/2015 8:30,162,Contact with Objects or Equipment
+A,9/9/2015 8:10,145,Contact with Objects or Equipment
+A,9/21/2015 8:00,23,"Slips, Trips, and Falls"
+B,9/21/2015 16:20,162,Overexertion and Bodily Reaction
+A,9/22/2015 8:30,17,Fires and Explosions
+B,9/22/2015 10:00,88,Fires and Explosions
+A,9/23/2015 10:45,7,Contact with Objects or Equipment
+A,10/1/2015 10:00,5,Mechanical Failures
+A,10/3/2015 16:30,23,Overexertion and Bodily Reaction
+B,10/13/2015 15:00,104,Contact with Objects or Equipment
+B,10/14/2015 14:00,25,Fires and Explosions
+A,10/21/2015 12:45,14,Contact with Objects or Equipment
+A,11/16/2015 7:00,5,Fires and Explosions
+A,12/3/2015 10:45,10,Contact with Objects or Equipment
+A,12/4/2015 20:10,10,Exposure to Harmful Substances or Environments
+A,12/7/2015 10:45,14,Mechanical Failures
+A,12/11/2015 13:20,9,Contact with Objects or Equipment
+A,12/15/2015 8:10,17,Fires and Explosions
+A,1/6/2016 18:00,11,Contact with Objects or Equipment
+A,1/11/2016 8:00,10,Contact with Objects or Equipment
+A,1/13/2016 10:15,10,Contact with Objects or Equipment
+A,1/19/2016 14:00,7,Mechanical Failures
+A,1/21/2016 15:45,21,Contact with Objects or Equipment
+B,1/21/2016 15:55,175,Contact with Objects or Equipment
+B,1/22/2016 0:00,72,Contact with Objects or Equipment
+B,1/22/2016 3:30,162,Mechanical Failures
+A,1/22/2016 19:00,7,Mechanical Failures
+A,1/22/2016 19:20,141,Mechanical Failures
+A,1/22/2016 20:15,5,Mechanical Failures
+A,1/25/2016 8:40,24,Contact with Objects or Equipment
+A,1/26/2016 10:55,17,Overexertion and Bodily Reaction
+A,1/27/2016 21:00,7,Contact with Objects or Equipment
+A,1/28/2016 10:45,7,Mechanical Failures
+A,2/1/2016 14:30,172,"Slips, Trips, and Falls"
+A,2/4/2016 8:15,30,Contact with Objects or Equipment
+A,2/8/2016 10:15,30,Contact with Objects or Equipment
+A,2/9/2016 11:45,7,Exposure to Harmful Substances or Environments
+A,2/10/2016 7:20,141,Contact with Objects or Equipment
+A,2/11/2016 13:50,10,Contact with Objects or Equipment
+A,2/17/2016 10:30,141,Fires and Explosions
+A,2/22/2016 14:20,7,Overexertion and Bodily Reaction
+A,2/23/2016 9:20,7,Mechanical Failures
+A,2/25/2016 18:00,7,Contact with Objects or Equipment
+A,2/25/2016 18:00,7,Contact with Objects or Equipment
+B,2/29/2016 9:20,51,Transportation Incidents
+A,3/1/2016 21:40,21,Exposure to Harmful Substances or Environments
+A,3/2/2016 3:00,175,Contact with Objects or Equipment
+A,3/2/2016 10:40,141,Overexertion and Bodily Reaction
+B,3/7/2016 16:30,78,Contact with Objects or Equipment
+B,3/10/2016 8:05,162,Contact with Objects or Equipment
+A,3/10/2016 8:30,141,Contact with Objects or Equipment
+A,3/10/2016 9:25,21,Contact with Objects or Equipment
+A,3/14/2016 13:00,24,Contact with Objects or Equipment
+A,3/15/2016 9:30,19,Mechanical Failures
+A,3/16/2016 15:50,5,Contact with Objects or Equipment
+B,3/17/2016 10:00,62,Exposure to Harmful Substances or Environments
+B,3/17/2016 10:30,66,Contact with Objects or Equipment
+A,3/17/2016 11:55,141,Fires and Explosions
+A,3/17/2016 14:00,172,Contact with Objects or Equipment
+A,3/18/2016 13:10,172,Fires and Explosions
+A,3/23/2016 8:15,24,Mechanical Failures
+A,3/28/2016 8:40,14,Exposure to Harmful Substances or Environments
+B,3/29/2016 8:30,57,Exposure to Harmful Substances or Environments
+A,3/30/2016 14:40,172,"Slips, Trips, and Falls"
+A,3/31/2016 8:30,19,Contact with Objects or Equipment
+A,4/5/2016 15:50,24,Contact with Objects or Equipment
+A,4/7/2016 11:55,24,Contact with Objects or Equipment
+B,4/12/2016 11:00,157,Overexertion and Bodily Reaction
+C,4/15/2016 20:15,13,Contact with Objects or Equipment
+B,4/18/2016 9:00,113,Contact with Objects or Equipment
+A,4/20/2016 9:45,17,Contact with Objects or Equipment
+A,4/21/2016 10:15,14,Mechanical Failures
+B,4/25/2016 12:15,162,Exposure to Harmful Substances or Environments
+B,4/25/2016 14:00,134,Fires and Explosions
+A,4/26/2016 15:30,26,Exposure to Harmful Substances or Environments
+A,4/27/2016 11:30,7,Mechanical Failures
+A,5/2/2016 7:45,10,Overexertion and Bodily Reaction
+A,5/3/2016 11:00,19,Contact with Objects or Equipment
+A,5/5/2016 8:45,131,Transportation Incidents
+B,5/6/2016 16:30,157,Transportation Incidents
+A,5/10/2016 15:00,132,Mechanical Failures
+C,5/11/2016 7:30,13,Contact with Objects or Equipment
+C,5/11/2016 11:15,13,Contact with Objects or Equipment
+A,5/12/2016 9:00,8,Overexertion and Bodily Reaction
+A,5/12/2016 10:15,10,Contact with Objects or Equipment
+A,5/12/2016 14:50,167,"Slips, Trips, and Falls"
+C,5/13/2016 5:00,13,Exposure to Harmful Substances or Environments
+B,5/16/2016 7:00,113,Contact with Objects or Equipment
+A,5/21/2016 14:30,21,Fires and Explosions
+A,5/24/2016 12:35,175,Contact with Objects or Equipment
+A,5/25/2016 10:40,7,Exposure to Harmful Substances or Environments
+A,5/26/2016 9:25,14,Fires and Explosions
+A,5/26/2016 15:30,10,Mechanical Failures
+A,6/1/2016 14:05,19,Overexertion and Bodily Reaction
+A,6/5/2016 9:15,7,Contact with Objects or Equipment
+A,6/6/2016 8:00,21,Violence or Other Injuries by Animals or People
+A,6/6/2016 9:00,7,Overexertion and Bodily Reaction
+A,6/8/2016 9:00,30,Contact with Objects or Equipment
+C,6/15/2016 11:00,4,Contact with Objects or Equipment
+B,6/17/2016 11:20,162,Contact with Objects or Equipment
+A,6/23/2016 9:20,10,Overexertion and Bodily Reaction
+A,6/23/2016 15:15,14,Mechanical Failures
+A,6/28/2016 9:30,7,Overexertion and Bodily Reaction
+A,6/29/2016 10:00,174,"Slips, Trips, and Falls"
+A,6/29/2016 11:45,7,Contact with Objects or Equipment
+A,6/30/2016 8:00,21,Exposure to Harmful Substances or Environments
+B,7/6/2016 16:45,162,Contact with Objects or Equipment
+B,7/7/2016 9:20,51,Transportation Incidents
+A,7/12/2016 11:20,133,Overexertion and Bodily Reaction
+A,7/13/2016 10:10,21,Exposure to Harmful Substances or Environments
+A,7/14/2016 8:40,4,Contact with Objects or Equipment
+A,7/19/2016 11:55,7,Contact with Objects or Equipment
+A,7/21/2016 7:25,7,Contact with Objects or Equipment
+A,7/22/2016 16:15,7,Contact with Objects or Equipment
+A,7/26/2016 7:25,19,Violence or Other Injuries by Animals or People
+A,7/26/2016 10:30,19,Contact with Objects or Equipment
+A,7/28/2016 11:10,23,Overexertion and Bodily Reaction
+A,7/28/2016 11:40,21,Contact with Objects or Equipment
+A,7/28/2016 16:00,7,Contact with Objects or Equipment
+B,7/30/2016 16:50,154,Transportation Incidents
+A,8/1/2016 14:20,18,Violence or Other Injuries by Animals or People
+A,8/2/2016 7:45,7,Exposure to Harmful Substances or Environments
+B,8/2/2016 14:15,126,Transportation Incidents
+C,8/2/2016 14:55,164,Exposure to Harmful Substances or Environments
+B,8/4/2016 10:00,102,Transportation Incidents
+A,8/4/2016 11:45,24,Exposure to Harmful Substances or Environments
+B,8/4/2016 13:40,113,Transportation Incidents
+A,8/4/2016 14:40,14,Contact with Objects or Equipment
+A,8/5/2016 16:25,10,Violence or Other Injuries by Animals or People
+A,8/9/2016 14:15,10,Mechanical Failures
+A,8/10/2016 8:10,164,"Slips, Trips, and Falls"
+A,8/10/2016 10:40,7,Contact with Objects or Equipment
+B,8/15/2016 8:30,29,Overexertion and Bodily Reaction
+A,8/17/2016 7:00,10,Contact with Objects or Equipment
+A,8/17/2016 13:20,6,Fires and Explosions
+A,8/18/2016 6:40,10,Overexertion and Bodily Reaction
+B,8/18/2016 7:55,175,Transportation Incidents
+B,8/19/2016 11:00,38,Contact with Objects or Equipment
+B,8/24/2016 8:00,115,Contact with Objects or Equipment
+B,8/26/2016 8:20,84,Violence or Other Injuries by Animals or People
+A,8/26/2016 13:45,10,Overexertion and Bodily Reaction
+A,8/26/2016 14:10,4,Overexertion and Bodily Reaction
+B,8/27/2016 7:00,104,Contact with Objects or Equipment
+A,8/31/2016 8:00,6,Fires and Explosions
+A,8/31/2016 8:30,10,Contact with Objects or Equipment
+A,8/31/2016 13:10,23,Exposure to Harmful Substances or Environments
+A,9/1/2016 11:00,7,Overexertion and Bodily Reaction
+A,9/6/2016 8:00,23,Violence or Other Injuries by Animals or People
+A,9/8/2016 12:00,151,Fires and Explosions
+A,9/9/2016 10:45,147,Contact with Objects or Equipment
+C,9/9/2016 13:30,146,Contact with Objects or Equipment
+A,9/14/2016 15:50,14,Contact with Objects or Equipment
+A,9/14/2016 16:50,22,Mechanical Failures
+A,9/15/2016 6:30,10,Transportation Incidents
+A,9/23/2016 10:05,175,Violence or Other Injuries by Animals or People
+A,9/26/2016 15:10,21,Exposure to Harmful Substances or Environments
+A,9/27/2016 15:40,7,Contact with Objects or Equipment
+A,9/29/2016 9:00,9,Transportation Incidents
+A,9/29/2016 10:10,7,Mechanical Failures
+A,10/5/2016 13:00,22,Mechanical Failures
+A,10/6/2016 12:45,30,Exposure to Harmful Substances or Environments
+B,10/6/2016 13:30,51,Contact with Objects or Equipment
+A,10/11/2016 9:30,19,Fires and Explosions
+A,10/14/2016 9:50,175,Violence or Other Injuries by Animals or People
+C,10/20/2016 6:15,12,Contact with Objects or Equipment
+A,10/20/2016 16:15,7,Contact with Objects or Equipment
+A,10/24/2016 1:25,4,Mechanical Failures
+B,10/24/2016 14:00,134,Overexertion and Bodily Reaction
+B,10/26/2016 8:55,134,"Slips, Trips, and Falls"
+A,10/26/2016 11:25,22,Contact with Objects or Equipment
+A,10/29/2016 11:40,7,Contact with Objects or Equipment
+A,10/31/2016 15:15,22,Mechanical Failures
+A,11/4/2016 8:10,23,Contact with Objects or Equipment
+A,11/7/2016 11:05,26,Fires and Explosions
+A,11/14/2016 9:30,21,Overexertion and Bodily Reaction
+A,11/14/2016 12:55,7,Mechanical Failures
+B,11/14/2016 15:25,61,Fires and Explosions
+A,11/16/2016 10:25,21,Fires and Explosions
+A,11/17/2016 8:20,21,Overexertion and Bodily Reaction
+B,11/17/2016 9:00,157,Fires and Explosions
+B,11/17/2016 13:45,7,"Slips, Trips, and Falls"
+C,11/21/2016 11:35,7,Fires and Explosions
+A,11/21/2016 13:15,10,Contact with Objects or Equipment
+A,11/21/2016 13:45,172,Contact with Objects or Equipment
+A,11/22/2016 11:15,175,Fires and Explosions
+A,11/22/2016 11:40,7,Fires and Explosions
+A,11/23/2016 2:25,7,Mechanical Failures
+A,11/23/2016 8:30,7,Contact with Objects or Equipment
+A,11/28/2016 11:10,7,Overexertion and Bodily Reaction
+A,11/29/2016 12:10,7,Overexertion and Bodily Reaction
+C,11/29/2016 16:35,13,Overexertion and Bodily Reaction
+B,12/6/2016 8:15,59,Contact with Objects or Equipment
+A,12/6/2016 16:15,7,Exposure to Harmful Substances or Environments
+A,12/8/2016 16:00,12,Exposure to Harmful Substances or Environments
+A,12/9/2016 18:00,7,Overexertion and Bodily Reaction
+B,12/12/2016 10:00,157,Contact with Objects or Equipment
+C,12/14/2016 15:00,14,Transportation Incidents
+B,12/22/2016 16:15,162,Fires and Explosions
+A,12/22/2016 17:00,21,Transportation Incidents
+B,1/9/2017 15:30,90,Transportation Incidents
+C,1/11/2017 7:30,100,"Slips, Trips, and Falls"
+A,1/11/2017 10:00,21,Mechanical Failures
+A,1/12/2017 7:25,21,Mechanical Failures
+B,1/18/2017 12:00,39,Contact with Objects or Equipment
+A,1/23/2017 8:50,21,Fires and Explosions
+C,1/24/2017 16:00,14,"Slips, Trips, and Falls"
+A,1/25/2017 13:55,16,Fires and Explosions
+A,1/30/2017 10:20,7,Contact with Objects or Equipment
+B,2/13/2017 9:10,175,Transportation Incidents
+B,2/21/2017 14:00,128,Mechanical Failures
+A,2/25/2017 9:30,141,Contact with Objects or Equipment
+A,2/28/2017 7:00,16,Contact with Objects or Equipment
+A,2/28/2017 7:00,16,Contact with Objects or Equipment
+B,3/1/2017 15:00,29,Contact with Objects or Equipment
+A,3/2/2017 9:45,17,Contact with Objects or Equipment
+A,3/2/2017 13:00,141,Contact with Objects or Equipment
+A,3/4/2017 13:00,17,Transportation Incidents
+A,3/6/2017 5:55,7,Mechanical Failures
+A,3/6/2017 13:20,10,Overexertion and Bodily Reaction
+A,3/6/2017 15:00,17,Transportation Incidents
+A,3/8/2017 10:00,140,Overexertion and Bodily Reaction
+A,3/8/2017 15:40,4,Exposure to Harmful Substances or Environments
+A,3/8/2017 16:00,22,Fires and Explosions
+A,3/10/2017 7:00,7,Mechanical Failures
+B,3/15/2017 16:30,113,Transportation Incidents
+A,3/17/2017 11:30,141,Mechanical Failures
+B,3/20/2017 11:30,175,Contact with Objects or Equipment
+A,3/20/2017 15:50,174,Fires and Explosions
+A,3/21/2017 10:55,7,Contact with Objects or Equipment
+A,3/21/2017 11:40,141,Contact with Objects or Equipment
+A,3/21/2017 12:15,7,Contact with Objects or Equipment
+A,3/23/2017 11:00,141,Mechanical Failures
+A,3/27/2017 12:40,7,Contact with Objects or Equipment
+A,4/7/2017 15:35,141,Mechanical Failures
+B,4/8/2017 12:00,116,Transportation Incidents
+A,4/10/2017 7:15,141,Mechanical Failures
+A,4/10/2017 12:30,137,"Slips, Trips, and Falls"
+A,4/13/2017 9:50,21,Transportation Incidents
+C,4/20/2017 8:30,12,Transportation Incidents
+B,4/20/2017 11:00,120,Contact with Objects or Equipment
+A,4/27/2017 8:30,7,Contact with Objects or Equipment
+B,4/27/2017 13:25,36,Transportation Incidents
+A,4/28/2017 15:20,173,Fires and Explosions
+A,5/1/2017 10:45,7,Transportation Incidents
+B,5/3/2017 14:50,148,Mechanical Failures
+A,5/4/2017 8:00,7,Transportation Incidents
+A,5/5/2017 15:00,10,Contact with Objects or Equipment
+A,5/11/2017 0:00,141,Mechanical Failures
+B,5/11/2017 11:10,175,Violence or Other Injuries by Animals or People
+B,5/16/2017 13:20,157,Fires and Explosions
+B,5/17/2017 8:30,175,Transportation Incidents
+A,5/22/2017 16:00,17,Transportation Incidents
+A,5/30/2017 7:20,14,Contact with Objects or Equipment
+B,5/31/2017 15:30,162,Transportation Incidents
+A,6/5/2017 15:05,14,Overexertion and Bodily Reaction
+A,6/7/2017 11:10,12,"Slips, Trips, and Falls"
+A,6/8/2017 11:30,164,Transportation Incidents
+B,6/9/2017 13:10,148,Fires and Explosions
+C,6/15/2017 10:35,12,Contact with Objects or Equipment
+A,6/19/2017 10:35,21,Transportation Incidents
+B,6/19/2017 15:00,29,Contact with Objects or Equipment
+A,6/20/2017 10:35,16,Mechanical Failures
+B,6/22/2017 8:35,106,"Slips, Trips, and Falls"
+B,6/22/2017 14:25,162,Transportation Incidents
+B,6/22/2017 15:00,162,Contact with Objects or Equipment
+A,6/26/2017 8:25,7,Transportation Incidents
+B,6/26/2017 17:55,129,Mechanical Failures
+B,6/28/2017 7:35,29,Contact with Objects or Equipment
+A,7/5/2017 12:00,17,Overexertion and Bodily Reaction
+A,7/5/2017 13:30,147,Exposure to Harmful Substances or Environments
+B,7/7/2017 8:00,134,Transportation Incidents
+B,7/7/2017 8:40,75,Contact with Objects or Equipment
+A,7/12/2017 14:15,21,Fires and Explosions
+A,7/13/2017 12:30,7,Mechanical Failures
+B,7/25/2017 13:40,116,Violence or Other Injuries by Animals or People
+B,7/25/2017 15:15,45,Mechanical Failures
+B,7/26/2017 14:55,148,Contact with Objects or Equipment
+B,7/27/2017 11:30,114,Fires and Explosions
+A,8/3/2017 22:30,4,Overexertion and Bodily Reaction
+B,8/7/2017 8:45,115,Contact with Objects or Equipment
+A,8/8/2017 8:20,21,Transportation Incidents
+A,8/17/2017 14:15,7,Fires and Explosions
+A,8/22/2017 8:35,21,Transportation Incidents
+A,8/22/2017 11:10,7,Contact with Objects or Equipment
+A,8/23/2017 14:45,174,Transportation Incidents
+B,8/25/2017 14:00,29,Transportation Incidents
+A,8/28/2017 9:05,141,Fires and Explosions
+C,8/30/2017 23:15,11,Contact with Objects or Equipment
+A,8/31/2017 6:50,141,Mechanical Failures
+B,8/31/2017 15:35,162,Fires and Explosions
+B,9/6/2017 13:10,40,Transportation Incidents
+A,9/14/2017 13:50,7,Contact with Objects or Equipment
+B,9/14/2017 14:15,175,Contact with Objects or Equipment
+A,9/25/2017 13:20,135,Fires and Explosions
+B,9/28/2017 10:20,113,Contact with Objects or Equipment
+A,10/2/2017 10:35,18,Overexertion and Bodily Reaction
+C,10/10/2017 14:10,11,Fires and Explosions
+A,10/12/2017 11:15,151,Fires and Explosions
+A,10/18/2017 6:40,7,"Slips, Trips, and Falls"
+A,10/23/2017 14:00,21,Contact with Objects or Equipment
+A,10/24/2017 5:45,30,Transportation Incidents
+A,10/24/2017 8:30,18,Fires and Explosions
+A,10/24/2017 9:00,18,Mechanical Failures
+A,10/24/2017 15:10,17,Contact with Objects or Equipment
+B,10/25/2017 10:50,43,Transportation Incidents
+A,10/25/2017 11:35,21,Mechanical Failures
+B,10/25/2017 14:25,89,Transportation Incidents
+B,10/31/2017 16:15,157,Transportation Incidents
+B,11/7/2017 14:00,149,Contact with Objects or Equipment
+A,11/8/2017 11:50,22,Contact with Objects or Equipment
+A,11/8/2017 14:00,71,Transportation Incidents
+A,11/13/2017 9:10,21,Transportation Incidents
+A,11/15/2017 15:30,21,Transportation Incidents
+B,11/17/2017 12:50,98,"Slips, Trips, and Falls"
+B,11/17/2017 13:30,53,Transportation Incidents
+A,11/21/2017 11:30,21,Contact with Objects or Equipment
+A,11/22/2017 12:30,7,Transportation Incidents
+A,11/28/2017 8:45,7,Overexertion and Bodily Reaction
+B,11/29/2017 22:00,127,Transportation Incidents
+B,12/1/2017 11:15,85,Exposure to Harmful Substances or Environments
+B,12/4/2017 8:30,111,Transportation Incidents
+A,12/6/2017 14:10,7,Contact with Objects or Equipment
+A,12/7/2017 23:20,135,Mechanical Failures
+A,12/8/2017 9:15,7,Contact with Objects or Equipment
+A,12/11/2017 11:25,7,Contact with Objects or Equipment
+A,12/12/2017 11:10,21,Transportation Incidents
+A,12/14/2017 8:25,7,Contact with Objects or Equipment
+A,12/15/2017 16:00,24,Fires and Explosions
+B,12/15/2017 21:40,65,Contact with Objects or Equipment
+B,12/20/2017 8:40,162,Exposure to Harmful Substances or Environments
+B,12/26/2017 21:10,65,Transportation Incidents
+A,12/27/2017 7:35,7,Contact with Objects or Equipment
+A,12/28/2017 14:00,7,Contact with Objects or Equipment
+C,1/8/2018 5:55,11,"Slips, Trips, and Falls"
+A,1/10/2018 12:45,165,Fires and Explosions
+A,1/10/2018 13:00,14,Fires and Explosions
+A,1/18/2018 8:55,7,Mechanical Failures
+B,1/18/2018 15:35,175,Transportation Incidents
+A,1/22/2018 12:45,7,Mechanical Failures
+B,1/22/2018 16:05,68,Transportation Incidents
+A,1/23/2018 11:25,7,Transportation Incidents
+A,1/23/2018 12:20,7,Contact with Objects or Equipment
+B,1/27/2018 13:00,69,Transportation Incidents
+A,1/29/2018 7:10,4,Contact with Objects or Equipment
+B,1/30/2018 9:10,93,Transportation Incidents
+C,2/2/2018 13:15,16,Contact with Objects or Equipment
+B,2/7/2018 21:30,91,Transportation Incidents
+B,2/8/2018 8:10,117,"Slips, Trips, and Falls"
+A,2/15/2018 9:10,19,Mechanical Failures
+B,2/16/2018 13:30,28,Transportation Incidents
+B,2/27/2018 20:40,148,"Slips, Trips, and Falls"
+A,3/1/2018 13:20,16,Transportation Incidents
+A,3/1/2018 22:15,169,Mechanical Failures
+A,3/7/2018 12:05,164,Fires and Explosions
+A,3/7/2018 14:40,21,Fires and Explosions
+A,3/8/2018 7:30,21,Fires and Explosions
+A,3/8/2018 19:00,21,Transportation Incidents
+C,3/13/2018 14:45,11,Overexertion and Bodily Reaction
+B,3/13/2018 15:40,162,"Slips, Trips, and Falls"
+A,3/15/2018 8:45,4,Overexertion and Bodily Reaction
+B,3/19/2018 10:15,122,Transportation Incidents
+B,3/19/2018 14:00,122,Transportation Incidents
+A,3/20/2018 7:30,17,Contact with Objects or Equipment
+A,3/20/2018 10:25,7,Contact with Objects or Equipment
+B,3/22/2018 10:25,44,Transportation Incidents
+B,3/23/2018 6:55,82,Transportation Incidents
+B,3/23/2018 14:00,54,Transportation Incidents
+A,3/26/2018 18:00,26,Exposure to Harmful Substances or Environments
+C,3/27/2018 10:40,11,Contact with Objects or Equipment
+A,3/29/2018 12:30,26,"Slips, Trips, and Falls"
+B,3/29/2018 13:45,46,Transportation Incidents
+B,4/2/2018 11:00,110,Overexertion and Bodily Reaction
+B,4/4/2018 15:30,31,Transportation Incidents
+B,4/6/2018 14:00,148,Contact with Objects or Equipment
+A,4/10/2018 13:30,24,Contact with Objects or Equipment
+A,4/11/2018 7:05,7,Contact with Objects or Equipment
+C,4/13/2018 13:30,11,Contact with Objects or Equipment
+A,4/17/2018 11:00,17,Mechanical Failures
+B,4/18/2018 14:15,41,Transportation Incidents
+B,4/18/2018 14:50,42,Transportation Incidents
+A,4/25/2018 8:50,10,Contact with Objects or Equipment
+B,5/18/2018 11:10,175,Transportation Incidents
+B,5/23/2018 15:45,148,Transportation Incidents
+A,5/24/2018 11:55,164,Contact with Objects or Equipment
+A,5/29/2018 14:15,14,Contact with Objects or Equipment
+A,5/29/2018 14:25,7,Contact with Objects or Equipment
+C,5/31/2018 8:00,11,Transportation Incidents
+A,6/5/2018 13:25,5,Contact with Objects or Equipment
+A,6/6/2018 11:30,152,Fires and Explosions
+A,6/7/2018 8:55,14,Mechanical Failures
+D,6/7/2018 10:50,18,Transportation Incidents
+A,6/8/2018 10:30,172,Transportation Incidents
+A,6/12/2018 8:15,7,Mechanical Failures
+B,6/12/2018 15:00,105,Transportation Incidents
+A,6/14/2018 20:15,174,Fires and Explosions
+A,6/15/2018 8:40,23,Fires and Explosions
+A,6/15/2018 23:15,175,Fires and Explosions
+B,6/19/2018 8:20,170,Overexertion and Bodily Reaction
+B,6/19/2018 11:25,148,Contact with Objects or Equipment
+B,6/19/2018 12:00,46,Transportation Incidents
+A,6/19/2018 14:00,6,Fires and Explosions
+B,6/19/2018 16:15,157,Transportation Incidents
+A,6/20/2018 8:20,23,Contact with Objects or Equipment
+B,6/20/2018 10:30,175,Overexertion and Bodily Reaction
+B,6/20/2018 11:50,158,Fires and Explosions
+C,6/22/2018 15:25,11,Contact with Objects or Equipment
+A,6/25/2018 13:40,23,Transportation Incidents
+A,6/26/2018 16:40,21,Transportation Incidents
+A,6/27/2018 11:15,21,Transportation Incidents
+B,6/28/2018 13:50,92,Transportation Incidents
+B,6/29/2018 8:00,136,Contact with Objects or Equipment
+A,7/10/2018 13:00,172,Contact with Objects or Equipment
+A,7/10/2018 17:00,26,Mechanical Failures
+B,7/11/2018 9:15,95,Transportation Incidents
+B,7/13/2018 15:20,76,Transportation Incidents
+B,7/16/2018 12:50,35,Transportation Incidents
+B,7/17/2018 15:40,32,Transportation Incidents
+A,7/18/2018 10:35,5,Fires and Explosions
+B,7/18/2018 14:40,58,Transportation Incidents
+C,7/20/2018 8:15,11,Contact with Objects or Equipment
+B,7/24/2018 14:35,134,Overexertion and Bodily Reaction
+A,7/26/2018 20:30,21,Contact with Objects or Equipment
+A,7/26/2018 22:30,23,Contact with Objects or Equipment
+B,7/30/2018 15:30,157,Contact with Objects or Equipment
+A,8/1/2018 9:00,174,Exposure to Harmful Substances or Environments
+B,8/1/2018 14:00,56,Violence or Other Injuries by Animals or People
+B,8/1/2018 14:35,103,"Slips, Trips, and Falls"
+B,8/1/2018 15:00,56,"Slips, Trips, and Falls"
+A,8/6/2018 10:55,141,Transportation Incidents
+B,8/7/2018 8:10,47,Transportation Incidents
+A,8/7/2018 10:30,141,Exposure to Harmful Substances or Environments
+A,8/9/2018 13:15,5,Contact with Objects or Equipment
+A,8/13/2018 14:00,141,Exposure to Harmful Substances or Environments
+A,8/13/2018 14:25,23,Exposure to Harmful Substances or Environments
+A,8/14/2018 9:00,23,Exposure to Harmful Substances or Environments
+A,8/14/2018 10:40,21,Fires and Explosions
+A,8/16/2018 12:40,10,Contact with Objects or Equipment
+A,8/16/2018 12:45,23,Contact with Objects or Equipment
+A,8/20/2018 9:35,9,Exposure to Harmful Substances or Environments
+A,8/20/2018 10:20,24,Fires and Explosions
+C,8/21/2018 11:00,7,Contact with Objects or Equipment
+A,8/21/2018 13:45,24,Fires and Explosions
+A,8/22/2018 9:00,18,Fires and Explosions
+A,8/22/2018 10:15,141,Contact with Objects or Equipment
+B,8/22/2018 14:00,105,Transportation Incidents
+C,9/4/2018 7:45,139,Contact with Objects or Equipment
+A,9/5/2018 13:00,141,Contact with Objects or Equipment
+A,9/6/2018 14:10,5,Fires and Explosions
+B,9/7/2018 15:45,161,Transportation Incidents
+A,9/10/2018 8:40,9,Exposure to Harmful Substances or Environments
+A,9/11/2018 8:55,24,Fires and Explosions
+A,9/12/2018 11:45,7,Contact with Objects or Equipment
+A,9/13/2018 11:00,7,Fires and Explosions
+B,9/18/2018 10:40,34,Transportation Incidents
+A,9/19/2018 7:30,142,Contact with Objects or Equipment
+B,9/19/2018 14:35,64,Fires and Explosions
+A,9/24/2018 9:55,7,Fires and Explosions
+B,9/25/2018 4:15,63,Transportation Incidents
+B,9/28/2018 8:00,175,Transportation Incidents
+A,9/28/2018 14:10,141,Contact with Objects or Equipment
+A,10/1/2018 11:00,141,Contact with Objects or Equipment
+B,10/1/2018 11:00,175,Transportation Incidents
+B,10/3/2018 10:35,107,"Slips, Trips, and Falls"
+A,10/10/2018 13:30,5,Exposure to Harmful Substances or Environments
+B,10/10/2018 15:20,160,Transportation Incidents
+A,10/15/2018 16:25,5,"Slips, Trips, and Falls"
+B,10/16/2018 7:15,1,Transportation Incidents
+A,10/16/2018 9:55,141,Contact with Objects or Equipment
+A,10/16/2018 10:00,141,Contact with Objects or Equipment
+A,10/17/2018 7:00,7,Exposure to Harmful Substances or Environments
+C,10/18/2018 12:40,175,Transportation Incidents
+A,10/18/2018 13:05,22,Fires and Explosions
+A,10/18/2018 16:00,22,Fires and Explosions
+A,10/22/2018 13:30,22,Fires and Explosions
+A,10/31/2018 15:00,141,Fires and Explosions
+B,11/1/2018 8:40,39,Transportation Incidents
+B,11/1/2018 14:45,125,Transportation Incidents
+B,11/5/2018 11:20,79,Transportation Incidents
+A,11/6/2018 11:20,22,Fires and Explosions
+B,11/7/2018 14:55,116,Contact with Objects or Equipment
+B,11/8/2018 11:10,168,Transportation Incidents
+D,11/13/2018 10:30,14,Transportation Incidents
+A,11/14/2018 9:00,10,Contact with Objects or Equipment
+B,11/15/2018 9:10,3,Contact with Objects or Equipment
+A,11/17/2018 7:00,10,Transportation Incidents
+A,11/20/2018 10:15,135,Fires and Explosions
+A,11/27/2018 15:30,10,Overexertion and Bodily Reaction
+A,11/27/2018 15:30,10,Mechanical Failures
+A,11/30/2018 15:15,30,Transportation Incidents
+A,12/3/2018 9:00,141,Violence or Other Injuries by Animals or People
+A,12/3/2018 12:40,10,Contact with Objects or Equipment
+A,12/12/2018 8:30,167,Overexertion and Bodily Reaction
+B,12/17/2018 8:50,87,Violence or Other Injuries by Animals or People
+B,12/19/2018 13:00,170,Overexertion and Bodily Reaction
+B,12/20/2018 9:00,157,Transportation Incidents
+A,12/20/2018 11:30,10,Mechanical Failures
+A,12/27/2018 7:45,15,Overexertion and Bodily Reaction
+B,12/27/2018 8:00,77,Transportation Incidents
+A,1/3/2019 13:45,18,Overexertion and Bodily Reaction
+B,1/7/2019 10:00,123,Contact with Objects or Equipment
+A,1/7/2019 11:45,5,Fires and Explosions
+A,1/7/2019 16:15,22,Fires and Explosions
+A,1/8/2019 12:20,171,Overexertion and Bodily Reaction
+C,1/14/2019 11:00,18,Transportation Incidents
+A,1/17/2019 11:50,30,Contact with Objects or Equipment
+A,1/18/2019 14:00,175,Contact with Objects or Equipment
+C,1/22/2019 6:10,167,"Slips, Trips, and Falls"
+B,1/22/2019 13:45,24,Transportation Incidents
+A,1/22/2019 15:30,23,Transportation Incidents
+B,1/23/2019 13:30,130,Transportation Incidents
+A,1/28/2019 9:10,141,Fires and Explosions
+B,1/29/2019 7:50,109,"Slips, Trips, and Falls"
+A,1/29/2019 9:15,19,Mechanical Failures
+B,1/31/2019 7:40,49,Transportation Incidents
+A,1/31/2019 11:30,26,Transportation Incidents
+A,1/31/2019 12:00,16,"Slips, Trips, and Falls"
+B,2/1/2019 6:40,134,"Slips, Trips, and Falls"
+A,2/1/2019 13:50,141,Fires and Explosions
+B,2/4/2019 10:00,52,Transportation Incidents
+A,2/5/2019 7:00,141,Overexertion and Bodily Reaction
+A,2/7/2019 13:45,141,Contact with Objects or Equipment
+B,2/7/2019 16:25,175,Transportation Incidents
+B,2/12/2019 6:30,134,Transportation Incidents
+A,2/13/2019 11:55,10,Contact with Objects or Equipment
+B,2/13/2019 12:00,60,Transportation Incidents
+B,2/15/2019 21:25,156,Fires and Explosions
+B,2/21/2019 8:00,48,Transportation Incidents
+B,2/21/2019 13:25,175,Transportation Incidents
+A,2/22/2019 9:00,141,Mechanical Failures
+C,2/23/2019 22:00,141,Contact with Objects or Equipment
+A,2/25/2019 6:55,10,Contact with Objects or Equipment
+A,2/25/2019 8:45,19,Mechanical Failures
+A,2/25/2019 13:00,18,Mechanical Failures
+A,2/25/2019 16:00,18,Contact with Objects or Equipment
+B,2/26/2019 9:45,119,"Slips, Trips, and Falls"
+A,2/27/2019 9:30,138,"Slips, Trips, and Falls"
+A,2/28/2019 14:00,141,Overexertion and Bodily Reaction
+A,3/5/2019 8:00,8,Fires and Explosions
+A,3/5/2019 11:10,26,Mechanical Failures
+A,3/6/2019 8:15,11,Contact with Objects or Equipment
+A,3/8/2019 10:00,10,Overexertion and Bodily Reaction
+A,3/8/2019 10:40,10,Contact with Objects or Equipment
+A,3/12/2019 10:00,15,Transportation Incidents
+B,3/13/2019 8:30,96,Contact with Objects or Equipment
+A,3/13/2019 10:50,8,Fires and Explosions
+A,3/13/2019 11:25,11,Contact with Objects or Equipment
+A,3/14/2019 7:15,133,Transportation Incidents
+A,3/14/2019 7:40,22,Mechanical Failures
+A,3/14/2019 8:05,5,Fires and Explosions
+B,3/14/2019 12:00,125,Transportation Incidents
+C,3/18/2019 11:40,22,Contact with Objects or Equipment
+B,3/26/2019 13:35,116,Transportation Incidents
+A,3/27/2019 8:05,22,Mechanical Failures
+B,3/27/2019 15:10,148,Fires and Explosions
+A,3/28/2019 7:15,141,Overexertion and Bodily Reaction
+A,3/29/2019 9:40,11,Fires and Explosions
+A,4/1/2019 8:30,11,Overexertion and Bodily Reaction
+A,4/1/2019 11:30,6,Contact with Objects or Equipment
+B,4/3/2019 8:45,157,Fires and Explosions
+B,4/3/2019 8:50,123,Fires and Explosions
+A,4/3/2019 11:30,30,Transportation Incidents
+A,4/3/2019 11:30,30,Transportation Incidents
+A,4/4/2019 9:25,141,Overexertion and Bodily Reaction
+B,4/4/2019 10:00,162,Fires and Explosions
+A,4/8/2019 6:00,141,Overexertion and Bodily Reaction
+A,4/9/2019 15:10,141,Contact with Objects or Equipment
+A,4/10/2019 9:45,141,Overexertion and Bodily Reaction
+A,4/10/2019 10:45,141,Contact with Objects or Equipment
+A,4/12/2019 14:35,22,Mechanical Failures
+A,4/15/2019 8:30,26,Fires and Explosions
+B,4/15/2019 14:00,125,Transportation Incidents
+A,4/16/2019 8:45,10,Transportation Incidents
+A,4/16/2019 15:30,101,Overexertion and Bodily Reaction
+B,4/18/2019 12:40,116,Contact with Objects or Equipment
+A,4/22/2019 8:40,141,Contact with Objects or Equipment
+A,4/25/2019 6:50,9,Fires and Explosions
+B,4/26/2019 15:25,50,Transportation Incidents
+A,4/29/2019 11:00,22,Exposure to Harmful Substances or Environments
+B,5/6/2019 10:00,157,Overexertion and Bodily Reaction
+C,5/7/2019 8:00,141,Contact with Objects or Equipment
+A,5/7/2019 11:35,142,Overexertion and Bodily Reaction
+A,5/9/2019 6:30,141,Overexertion and Bodily Reaction
+A,5/13/2019 8:25,8,Fires and Explosions
+D,5/16/2019 13:55,167,Overexertion and Bodily Reaction
+A,5/16/2019 14:45,8,Contact with Objects or Equipment
+B,5/16/2019 15:15,162,Transportation Incidents
+A,5/17/2019 14:00,17,Fires and Explosions
+A,5/20/2019 8:25,22,Contact with Objects or Equipment
+B,5/20/2019 14:30,33,Transportation Incidents
+A,5/28/2019 17:15,141,Fires and Explosions
+A,5/31/2019 13:00,22,Fires and Explosions
+A,6/3/2019 8:00,141,Mechanical Failures
+B,6/4/2019 9:20,37,Transportation Incidents
+A,6/4/2019 13:50,17,Fires and Explosions
+B,6/5/2019 10:20,124,Transportation Incidents
+B,6/6/2019 13:50,74,Transportation Incidents
+B,6/6/2019 18:00,148,Contact with Objects or Equipment
+A,6/7/2019 13:00,141,Transportation Incidents
+A,6/11/2019 10:55,118,Transportation Incidents
+A,6/12/2019 15:00,10,Overexertion and Bodily Reaction
+A,6/13/2019 14:20,22,Contact with Objects or Equipment
+A,6/14/2019 7:30,10,Contact with Objects or Equipment
+A,6/14/2019 8:00,30,Contact with Objects or Equipment
+A,6/17/2019 7:30,10,Fires and Explosions
+B,6/17/2019 9:20,149,Transportation Incidents
+A,6/17/2019 16:30,166,Fires and Explosions
+B,6/18/2019 15:30,29,Contact with Objects or Equipment
+B,6/19/2019 13:20,149,Fires and Explosions
+A,6/24/2019 8:10,22,Contact with Objects or Equipment
+B,6/27/2019 9:00,116,Transportation Incidents
+A,6/28/2019 8:00,11,Exposure to Harmful Substances or Environments
+A,7/1/2019 7:20,141,"Slips, Trips, and Falls"
+A,7/1/2019 9:00,22,Mechanical Failures
+A,7/8/2019 13:00,143,Fires and Explosions
+A,7/9/2019 6:20,22,Fires and Explosions
+A,7/9/2019 13:00,153,Exposure to Harmful Substances or Environments
+A,7/10/2019 8:45,101,Exposure to Harmful Substances or Environments
+A,7/10/2019 9:00,22,Mechanical Failures
+A,7/10/2019 12:00,22,Exposure to Harmful Substances or Environments
+A,7/12/2019 7:05,174,Transportation Incidents
+B,7/15/2019 7:50,27,"Slips, Trips, and Falls"
+A,7/15/2019 12:00,172,Transportation Incidents
+A,7/17/2019 10:00,141,"Slips, Trips, and Falls"
+A,7/23/2019 13:10,14,Mechanical Failures
+A,7/24/2019 9:10,141,Contact with Objects or Equipment
+B,7/29/2019 15:45,129,Transportation Incidents
+A,8/1/2019 6:25,141,"Slips, Trips, and Falls"
+A,8/1/2019 11:00,141,Contact with Objects or Equipment
+B,8/2/2019 7:00,170,Transportation Incidents
+A,8/2/2019 11:30,7,Overexertion and Bodily Reaction
+B,8/6/2019 7:40,97,Overexertion and Bodily Reaction
+B,8/6/2019 11:30,150,Transportation Incidents
+B,8/7/2019 14:30,99,Overexertion and Bodily Reaction
+B,8/8/2019 8:35,149,"Slips, Trips, and Falls"
+B,8/9/2019 12:10,134,Overexertion and Bodily Reaction
+A,8/12/2019 20:30,14,Fires and Explosions
+B,8/14/2019 11:30,80,Overexertion and Bodily Reaction
+A,8/15/2019 10:25,26,Mechanical Failures
+B,8/15/2019 14:00,144,"Slips, Trips, and Falls"
+A,8/16/2019 12:00,7,Mechanical Failures
+A,8/19/2019 13:00,26,Fires and Explosions
+A,8/19/2019 15:30,141,Contact with Objects or Equipment
+A,8/20/2019 14:00,26,Fires and Explosions
+A,8/20/2019 14:50,18,Fires and Explosions
+A,8/21/2019 15:45,24,Transportation Incidents
+B,8/22/2019 8:00,2,Transportation Incidents
+A,8/22/2019 16:00,26,Fires and Explosions
+A,8/22/2019 19:55,141,Contact with Objects or Equipment
+A,8/23/2019 11:00,8,Fires and Explosions
+B,8/26/2019 7:40,155,Transportation Incidents
+A,8/26/2019 13:15,14,Transportation Incidents
+B,8/28/2019 10:15,134,Transportation Incidents
+D,9/9/2019 9:00,20,"Slips, Trips, and Falls"
+B,9/13/2019 15:00,1,Transportation Incidents
+B,9/13/2019 15:00,158,Fires and Explosions
+B,9/17/2019 8:00,70,Violence or Other Injuries by Animals or People
+C,9/24/2019 8:00,73,Contact with Objects or Equipment
+B,9/26/2019 10:00,81,Exposure to Harmful Substances or Environments
+B,9/26/2019 12:00,113,Transportation Incidents
+A,9/27/2019 13:15,141,Contact with Objects or Equipment
+A,9/27/2019 14:40,11,Fires and Explosions
+B,9/30/2019 11:30,81,Transportation Incidents
+A,10/2/2019 20:00,11,Overexertion and Bodily Reaction
+A,10/3/2019 8:30,141,Mechanical Failures
