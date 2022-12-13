@@ -1,0 +1,512 @@
+---
+title: "Descriptive Analytics of Safety Data"
+author: "Scott Haraburda"
+date: "October 15, 2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+
+#####Make sure you load any required packages.
+
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE)
+```
+
+
+## Purpose.
+To portray a graphical representation of safety data using descriptive analytics to assess valuable information. This includes a Pareto by event for all safety incidents, a Pareto of recordable incidents, a graph of recordable incidents by unit and by day of the week, a heatmap of recordable safety incidents by day of the week for each unit (percentage by day and by unit), safety pyramid by severity for each unit, and heatmap of incidents by time of the weekday.
+
+## Pareto by event for all safety incidents
+
+
+```{r Vis1,fig.align="center", echo=TRUE, warning = FALSE, message=FALSE}
+if (!require("pacman")) install.packages("pacman")
+pacman::p_load(data.table, dplyr, forcats, ggplot2, lattice, lubridate, pander, 
+               plyr, tibble, tidyr)
+#
+#  Read safety data
+#
+safety <- read.csv("safety_all.csv")
+safety2 <- read.csv("safety_all2.csv")
+#
+# Reformat date from character to date format
+#
+safety$date <- dmy(safety$date)
+safety2$date <- mdy_hm(safety2$date)
+#
+# Create Year and Month columns
+#
+safety$year <- year(safety$date)
+safety$month <- month(safety$date)
+safety$year <- factor(safety$year, levels = 2010:2019)
+safety$month <- factor(safety$month, levels = 1:12)
+#
+# Create Day of the Week (dow) column
+#
+weekday_labels <- c('Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat')
+safety$dow <- factor(wday(safety$date), levels = 1:7, labels = weekday_labels)
+#
+# Read incident type (A, B, C, D, E, NM) by severity.
+# Create recordable (rec) incident column.
+#
+type <- read.csv("safety_type.csv")                   # read directorate data
+safety <- join(safety, type, by = "severity", 
+    type = "left", match = "all")                     # create directorate column
+safety$rec <- ifelse(safety$type == "A" | safety$type == "B" |
+    safety$type == "C" | safety$type == "D", 1, 0)
+#
+# Create pareto analysis of safety incidents by event for FY2014-2019 data.
+#
+x1 <- subset(safety, safety$date >="2013-10-01")
+x1$rec[is.na(x1$rec)] <- 0
+a<- x1 %>% 
+  group_by(event, ) %>% 
+  dplyr::summarise(freq=n()) %>% 
+  tidyr::complete(event)
+x1 <- a
+x1$rank <- rank(-x1$freq, ties.method = "max")
+x1$event <- factor(x1$event, levels = x1$event[order(-x1$rank)])
+p1 <- ggplot(x1, aes(x= event, y=freq, fill=freq)) +
+  geom_bar(stat="identity", fill="darkorchid3") + 
+  coord_flip() +
+  guides(fill=FALSE) +
+  labs(title="All Incidents", 
+       subtitle="by incident (2014-2019)",
+       x="Event", 
+       y="Frequency") +
+  theme(plot.title = element_text(color="#0000FF", 
+                                  face="bold", 
+                                  size=22, 
+                                  hjust=0.5),
+        plot.subtitle=element_text(size=12, 
+                                   face="bold.italic", 
+                                   hjust=0.5),
+        axis.title.x = element_text(size=14, 
+                                    face="bold", 
+                                    color="black"),
+        axis.title.y = element_text(angle=0,
+                                    size=14, 
+                                    face="bold", 
+                                    color="black"),
+        axis.text.x = element_text(hjust = 1, 
+                                   face="bold",
+                                   color="black",
+                                   size=12),
+        axis.text.y = element_text(angle=0,
+                                   vjust = 1, 
+                                   face="bold",
+                                   color="black",
+                                   size=12),
+        legend.position="none",
+        panel.background = element_blank())
+p1
+```
+
+In this Pareto, the top three types of incidents become visible and easy to identify, which are fire/explosion, contact with object, and transportation.  This supports prioritization for which types of incidents to focus upon first.
+
+
+## Pareto of recordable incidents
+
+```{r Vis2,fig.align="center", echo=TRUE, warning = FALSE, message=FALSE}
+x2 <- subset(safety, 
+             safety$date >= "2013-10-01" & safety$rec == 1)
+x2$rec[is.na(x2$rec)] <- 0
+a<-x2 %>% 
+  group_by(event) %>% 
+  dplyr::summarize(freq=n()) %>% 
+  tidyr::complete(event)
+a[is.na(a)] <- 0                                  # replace NA with zero(0).
+x2 <- a
+x2$rank <- rank(-x2$freq, ties.method = "max")
+x2$event <- factor(x2$event, levels = x2$event[order(-x2$rank)])
+p2 <- ggplot(x2, aes(x= event, y=freq, fill=freq)) +
+  geom_bar(stat="identity", fill="darkorchid3") + 
+  coord_flip() +
+  guides(fill=FALSE) +
+  labs(title="Recordables", 
+       subtitle="by recordable (2014-2019)",
+       x="Event", 
+       y="Frequency") +
+  theme(plot.title = element_text(color="#0000FF", 
+                                  face="bold", 
+                                  size=22, 
+                                  hjust=0.5),
+        plot.subtitle=element_text(size=12, 
+                                   face="bold.italic", 
+                                   hjust=0.5),
+        axis.title.x = element_text(size=14, 
+                                    face="bold", 
+                                    color="black"),
+        axis.title.y = element_text(angle=0,
+                                    size=14, 
+                                    face="bold", 
+                                    color="black"),
+        axis.text.x = element_text(hjust = 1, 
+                                   face="bold",
+                                   color="black",
+                                   size=12),
+        axis.text.y = element_text(angle=0,
+                                   vjust = 1, 
+                                   face="bold",
+                                   color="black",
+                                   size=12),
+        legend.position="none",
+        panel.background = element_blank())
+p2
+```
+
+This Pareto is different than the first one by filtering out non-recordable incidents. For these more severe types of incidents, the top causes involve exposure to harmful substances, contact with objects, and overexertion.  This supports prioritization for which areas to work on first based upon severity of the incidents.
+
+## Graph of recordable incidents by unit
+
+
+```{r Vis3,fig.align="center", echo=TRUE, warning = FALSE, message=FALSE}
+x2 <- safety %>%
+  replace(is.na(.), 0)
+x2$year <- as.factor(as.integer(as.character(x2$year))-2000)
+x2 <- ddply(x2, ~ unit*year, summarize, rec=sum(rec))
+p3 <- ggplot(x2, aes(x= year, y=rec, color=unit, group=unit)) +
+  geom_line() +
+  geom_point(size=4) +
+  labs(title="Recordable Safety Incidents", 
+       subtitle="Line Graph by Unit",
+       x="Year", 
+       y="Recordable Incidents") +
+  theme(plot.title = element_text(color="#0000FF", 
+                                  face="bold", 
+                                  size=22, 
+                                  hjust=0.5),
+        plot.subtitle=element_text(size=12, 
+                                   face="bold.italic", 
+                                   hjust=0.5),
+        axis.title.x = element_text(size=14, 
+                                    face="bold", 
+                                    color="black"),
+        axis.title.y = element_text(angle=0,
+                                    size=14, 
+                                    face="bold", 
+                                    color="black"),
+        axis.text.x = element_text(hjust = 1, 
+                                   face="bold",
+                                   color="black",
+                                   size=12),
+        axis.text.y = element_text(angle=0,
+                                   vjust = 1, 
+                                   face="bold",
+                                   color="black",
+                                   size=12),
+        legend.key = element_rect(color=NA, 
+                                  fill=NA),
+        panel.background = element_blank())
+p3
+```
+
+This line graph provides a visual of trends of recordable incidents over time from 2010 through 2019.  As seen in this graph, Units A and B have the most amount of incidents, remaining steady around 15 per year for the last six years.
+
+## Heatmap of all safety incidents by day of week
+
+```{r Vis4,fig.align="center", echo=TRUE, warning = FALSE, message=FALSE}
+x2 <- safety %>%
+  replace(is.na(.), 0)
+a <- aggregate(x2$rec, 
+               by=list(Category=x2$dow), 
+               FUN=sum)
+b <- aggregate(x2$rec, 
+               by=list(x2$dow, x2$unit), 
+               FUN=sum)
+x2 <- x2 %>% 
+  rowwise %>%
+  do({result = as_data_frame(.)
+    result$rec_tot = a[a$Category == result$dow, 2]
+    result
+})
+x2 <- x2 %>%  
+  rowwise %>%
+  do({
+    result = as_data_frame(.)
+    result$rec_pct = (result$rec/(result$rec_tot))*100
+    result
+})
+a <- aggregate(x2$rec_pct, 
+               by=list(x2$dow, x2$unit), 
+               FUN=sum)
+a$rec_tot <- b$x
+colnames(a) <- c("dow", "unit", "rec_pct", "rec_tot")
+p4 <- ggplot(a, aes(x= dow, y=unit)) +
+  geom_tile(aes(fill = rec_pct), 
+            colour = "white",
+            show.legend = FALSE) + 
+  scale_fill_gradient(low = "white", high = "red") +
+  geom_text(aes(label = sprintf('%.0f rec', 
+                                rec_tot, 
+                                size = 2.5))) +
+  labs(title="Recordable Safety Incidents", 
+       subtitle="(2014-2019)",
+       x="Day of the Week", 
+       y="Unit",
+       fill="Percentage") +
+  theme(plot.title = element_text(color="#0000FF", 
+                                  face="bold", 
+                                  size=22, 
+                                  hjust=0.5),
+        plot.subtitle=element_text(size=12, 
+                                   face="bold.italic", 
+                                   hjust=0.5),
+        axis.title.x = element_text(size=14, 
+                                    face="bold", 
+                                    color="black"),
+        axis.title.y = element_text(angle=0,
+                                    size=14, 
+                                    face="bold", 
+                                    color="black"),
+        axis.text.x = element_text(hjust = 1, 
+                                   face="bold",
+                                   color="black",
+                                   size=12),
+        axis.text.y = element_text(angle=0,
+                                   vjust = 1, 
+                                   face="bold",
+                                   color="black",
+                                   size=12),
+        panel.background = element_blank())
+p4
+```
+
+This heatmap provides a visual representation of which unit is likely to have a recordable incident based upon day of week (DOW).  For all seven days, it appears that Unit A is most likely to have an incident, except for Wednesday which Unit B is slightly more likely.
+
+## Heatmap by unit
+
+```{r Vis5,fig.align="center", echo=TRUE, warning = FALSE, message=FALSE}
+x2 <- safety %>%
+  replace(is.na(.), 0)
+a <- aggregate(x2$rec, 
+               by=list(Category=x2$unit), 
+               FUN=sum)
+x2 <- x2 %>% 
+  rowwise %>%
+  do({
+    result = as_data_frame(.)
+    result$rec_tot = a[a$Category == result$unit, 2]
+    result
+})
+x2 <- x2 %>%  
+  rowwise %>%
+  do({
+    result = as_data_frame(.)
+    result$rec_pct = (result$rec/(result$rec_tot))*100
+    result
+ })
+a <- aggregate(x2$rec_pct, 
+               by=list(x2$dow, x2$unit), 
+               FUN=sum)
+a$rec_tot <- b$x
+colnames(a) <- c("dow", "unit", "rec_pct", "rec_tot")
+p5 <- ggplot(a, aes(x= dow, y=unit)) +
+  geom_tile(aes(fill = rec_pct), 
+            colour = "white",
+            show.legend = FALSE) + 
+  scale_fill_gradient(low = "white", high = "red") +
+  geom_text(aes(label = sprintf('%.0f rec', 
+                                rec_tot, 
+                                size = 2.5))) +
+  labs(title="Recordable Safety Incidents", 
+       subtitle="(2014-2019)",
+       x="Day of the Week", 
+       y="Unit",
+       fill="Percentage") +
+  theme(plot.title = element_text(color="#0000FF", 
+                                  face="bold", 
+                                  size=22, 
+                                  hjust=0.5),
+        plot.subtitle=element_text(size=12, 
+                                   face="bold.italic", 
+                                   hjust=0.5),
+        axis.title.x = element_text(size=14, 
+                                    face="bold", 
+                                    color="black"),
+        axis.title.y = element_text(angle=0,
+                                    size=14, 
+                                    face="bold", 
+                                    color="black"),
+        axis.text.x = element_text(hjust = 1, 
+                                   face="bold",
+                                   color="black",
+                                   size=12),
+        axis.text.y = element_text(angle=0,
+                                   vjust = 1, 
+                                   face="bold",
+                                   color="black",
+                                   size=12),
+        panel.background = element_blank())
+p5
+```
+
+This heatmap provides a visual representation of which day of the week each unit is likely to have a recordable incident.  Unit A appears most likely to have a recordable on Thursday, while Unit C appears likely to have a recordable on Wednesday.
+
+## Safety pyramid for all units
+This is a graphical representation of number of incidents, categorized from the lowest level of near-misses (NM) as they become more severe to the top of the pyrmaid with class A accidents.  The following are definitions for each category (type) of incident, which uses the DoD Accident/Mishap/Classification table^[Department of Defense Instruction 6055.07, <u>Mishap Notification, Investigation, Reporting, and Record Keeping</u> change 1, dated August 31, 2018. See Part II Definitions.].
+
+* <u>Class A:</u>  Fatality or total permanent disability. Or, property damage exceeding $2 million.
+* <u>Class B:</u>  Permanent partial disability or inpatient hospitalization of three or more people.  Or, property damage between $0.5-2 million.
+* <u>Class c:</u>  Nonfatal injury or illness that resulted in at least one day away from work, not including day of injury. Or, property damage between $50-500 thousand.
+* <u>Class D:</u>  OSHA recordable injury or illness.  Or, property damage between $20-50 thousand.
+* <u>Class E:</u>  Property damage between $5-20 thousand.
+* <u>Near Miss (NM):</u>  An incident that came close to becoming a Class A through E incident.
+
+```{r Vis6,fig.align="center", echo=TRUE, warning = FALSE, message=FALSE}
+x2 <- safety %>%
+  replace(is.na(.), 0) 
+a <- data.frame(with(x2, table(unit, type)))
+a1 <- a[!a$type == c('0'),]
+b <- aggregate(a1$Freq, 
+               by=list(a1$type), 
+               FUN=sum)
+b <- add_column(b, unit = "all")
+colnames(b) <- c("type", "freq", "unit")
+colnames(a1) <- c("unit", "type", "freq")
+a <- rbind(a1,b)
+a <- a[with(a, order(-type, -freq)), ]    # reorder with the additional unit 'all'
+a$type <- fct_rev(a$type)
+a<-as.data.table(a)
+a[, fill_value := seq(from = 1,to =  nrow(a))]
+p6 <- ggplot(a, aes(x= unit, y=type)) +
+  geom_tile(aes(fill = fill_value), 
+            colour = "black",
+            show.legend = FALSE) + 
+  geom_text(aes(label = sprintf('%.0f inc.', 
+                                freq, 
+                                size = 2.5))) +
+  scale_fill_gradient(low = "green", high = "red") + 
+  coord_fixed(ratio = .9) +
+  labs(title="All Incidents", 
+       subtitle="(2014-2019)",
+       x="Unit", 
+       y="Incident Type") +
+  theme(plot.title = element_text(color="#0000FF", 
+                                  face="bold", 
+                                  size=22, 
+                                  hjust=0.5),
+        plot.subtitle=element_text(size=12, 
+                                   face="bold.italic", 
+                                   hjust=0.5),
+        axis.title.x = element_text(size=14, 
+                                    face="bold", 
+                                    color="black"),
+        axis.title.y = element_text(angle=0,
+                                    size=14, 
+                                    face="bold", 
+                                    color="black"),
+        axis.text.x = element_text(hjust = 1, 
+                                   face="bold",
+                                   color="black",
+                                   size=12),
+        axis.text.y = element_text(angle=0,
+                                   vjust = 1, 
+                                   face="bold",
+                                   color="black",
+                                   size=12),
+        panel.background = element_blank())
+p6
+```
+
+This heatmap shows the safety pyramid for each unit, and collectively for all them combined together, beginning from near misses (NM) at the bottom and escalating with more severe incidents, labeled from A through E. In this heatmap, there were no Class A incidents from 2014 through 2019.
+
+## Heatmap of incidents by time period 
+The data used for this was filtered to those that possess time of day in the incident.  To obtain more representative data requires better creation of data.
+
+```{r Vis7,fig.align="center", echo=TRUE, warning = FALSE, message=FALSE}
+a <- hour(safety2$date)
+a <- as.data.frame(a)
+b <- as.Date(safety2$date)
+b <- as.data.frame(b)
+a <- cbind(b,a)
+colnames(a) <- c("date", "hour")
+a <- join(safety, a, 
+          by = "date", 
+          type = "left", 
+          match = "all")                     # create unit column
+a <- a %>% 
+  drop_na()
+a <- join(a, type, 
+          by = "severity", 
+          type = "left", 
+          match = "all")                     # create unit column
+a$rec <- ifelse(a$type == "A" | 
+                  a$type == "B" | 
+                  a$type == "C" | 
+                  a$type == "D", 1, 0)
+cut_levels <- c(1, 6, 9, 12, 15, 18, 22)
+hour_labels <- c('1AM-6AM', '6AM-9AM', '9AM-12PM', '12PM-3PM', '3PM-6PM', 
+                 '6PM-10PM', '10PM-1AM')
+a$period <- addNA(cut(a$hour, cut_levels))
+levels(a$period) <- hour_labels
+weekday_labels <- c('Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat')
+a$dow <- factor(wday(a$date), 
+                levels = 1:7, 
+                labels = weekday_labels)
+r <- subset(a, a$rec == 1)
+x <- ddply(r, ~dow, summarize, rec=sum(period=="1AM-6AM"))
+b <- add_column(x, period = "1AM-6AM")
+y <- ddply(r, ~dow, summarize, rec=sum(period=="6AM-9AM"))
+c <- add_column(y, period = "6AM-9AM")
+x <- rbind(b,c)
+y <- ddply(r, ~dow, summarize, rec=sum(period=="9AM-12PM"))
+c <- add_column(y, period = "9AM-12PM")
+x <- rbind(x,c)
+y <- ddply(r, ~dow, summarize, rec=sum(period=="12PM-3PM"))
+c <- add_column(y, period = "12PM-3PM")
+x <- rbind(x,c)
+y <- ddply(r, ~dow, summarize, rec=sum(period=="3PM-6PM"))
+c <- add_column(y, period = "3PM-6PM")
+x <- rbind(x,c)
+y <- ddply(r, ~dow, summarize, rec=sum(period=="6PM-10PM"))
+c <- add_column(y, period = "6PM-10PM")
+x <- rbind(x,c)
+y <- ddply(r, ~dow, summarize, rec=sum(period=="10PM-1AM"))
+c <- add_column(y, period = "10PM-1AM")
+x <- rbind(x,c)
+x$period <- factor(x$period, levels = hour_labels)
+p7 <- ggplot(x, aes(x= dow, y=period)) +
+  geom_tile(aes(fill = rec), 
+            colour = "white",
+            show.legend = FALSE) + 
+  geom_text(aes(label = sprintf('%.0f rec', 
+                                rec, 
+                                size = 2.5))) +
+  scale_fill_gradient(low = "white", high = "red") + 
+  coord_fixed(ratio = .9) +
+  labs(title="Recordables", 
+       subtitle="(2014-2019)",
+       x="Day of the Week", 
+       y="Time of the Day",
+       fill="Recordables") +
+  theme(plot.title = element_text(color="#0000FF", 
+                                  face="bold", 
+                                  size=22, 
+                                  hjust=0.5),
+        plot.subtitle=element_text(size=12, 
+                                   face="bold.italic", 
+                                   hjust=0.5),
+        axis.title.x = element_text(size=14, 
+                                    face="bold", 
+                                    color="black"),
+        axis.title.y = element_text(angle=0,
+                                    size=14, 
+                                    face="bold", 
+                                    color="black"),
+        axis.text.x = element_text(hjust = 1, 
+                                   face="bold",
+                                   color="black",
+                                   size=12),
+        axis.text.y = element_text(angle=0,
+                                   vjust = 1, 
+                                   face="bold",
+                                   color="black",
+                                   size=12),
+        panel.background = element_blank())
+p7
+```
+
+This heatmap highlights that the early mornings of Mondays (between 6-9am) and late mornings of Thursday (between 9am-noon) are the times during the week when accidents are most likely to occur.  This supports prioritization for when we should be more focused upon safety as a way to reduce accidents in an organization.
+
+In this heatmap, there were no recordables identified for the weekend (Saturday and Sunday). This happened because the data for the weekend did not contain data for the time of incident, which resulted in the incident being filtered from the analysis.
