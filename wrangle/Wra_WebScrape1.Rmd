@@ -13,7 +13,7 @@ knitr::opts_chunk$set(echo = TRUE, warning = FALSE)
 ```
 
 ## Purpose.
-To retrieve tabular data via web scraping techniques. This example extracts the “past population” data (11th table on the website) from the Wikipedia “World Population” site.
+To retrieve tabular data via web scraping techniques. This example extracts the “past population” data (10th table on the website) from the Wikipedia “World Population” site.
 
 The following is a snapshot of the website containing this data.
 
