@@ -1,0 +1,91 @@
+---
+title: "Retrieve Tabular Data from a Website"
+author: "Scott Haraburda"
+date: "April 27, 2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+
+#####Make sure you load any required packages.
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE)
+
+```
+
+## Purpose.
+To retrieve tabular data via web scraping techniques. This example extracts the “past population” data (11th table on the website) from the Wikipedia “World Population” site.
+
+The following is a snapshot of the website containing this data.
+
+<div align="center">
+```{r image0,fig.align="center", echo=FALSE}
+knitr::include_graphics("WorldPop.png")
+```
+</div>
+
+```{r Wra1,fig.align="center", echo=TRUE, warning = FALSE, message=FALSE}
+if (!require("pacman")) install.packages("pacman")
+pacman::p_load(flextable, lubridate, rvest, stringr, tidyverse)
+#
+# World population wikipedia website – past population
+#
+url <- paste0("https://en.wikipedia.org/wiki/World_population")
+h <- read_html(url)
+tab <- h %>% 
+  html_nodes("table")
+tab                                                 # show the list of tables
+```
+
+Based upon this list, there are 24 nodes (tables) in this website.  To determine which node contains the tabular data, this could be extracted from the file using the <i>html_table</i> code for each node, then printing them using the head() function.  After doing this, the table with the required data resides in the 10th node.  Please note that this node may change with time as websites tend to change.
+
+## Data wrangling of tabular data
+The following code contains several lines of code to remove commas, columns, NA entries, and other unnecessary items.  It also includes conversion of character to numeric values, along with creation of BC and AD year entries. These years can also be transformed to date/time format if needed for further analysis.
+
+```{r Wra2,fig.align="center", echo=TRUE, warning = FALSE, message=FALSE}
+tab <- tab[[10]] %>% 
+  html_table                                        # extract the 10th table
+tab <- subset(tab, select = -Notes)                 # remove Notes column
+tab[is.na(tab)] <- 0                                # replace NA with zeroes (0)
+tab <- tab %>% 
+  setNames(c("Year", "World", "Africa", "Asia", "Europe",
+     "S_America", "N_America", "Oceania"))          # rename columns
+tab$Year <- str_replace_all(tab$Year, ",", "")      # remove commas from Year
+tab$Africa <- str_replace_all(tab$Africa, ",", "")  # remove commas from Africa
+tab$Asia <- str_replace_all(tab$Asia, ",", "")      # remove commas from Asia
+tab$World <- str_replace_all(tab$World, ",", "")    # remove commas from World
+tab$Year <- str_replace_all(tab$Year, "AD ", "")    # remove “AD” from Year
+tab$World <- str_replace_all(tab$World, "< ", "")   # remove “<” from World
+tab <- tab %>% 
+  separate(Year, c("Year", "BC"), sep = " ")        # create a BC column
+tab$Africa <- ifelse(nchar(tab$Africa)==0, "0", tab$Africa)
+tab$Asia <- ifelse(nchar(tab$Asia)==0, "0", tab$Asia)
+tab$Year <- as.numeric(tab$Year)                    # convert chr to num column
+tab$World <- as.numeric(tab$World)                  # convert chr to num column
+tab$Africa <- as.numeric(tab$Africa)                # convert chr to num column
+tab$Asia <- as.numeric(tab$Asia)                    # convert chr to num column
+tab$BC <- tab$BC %>%
+  replace_na("AD")
+tab$Year <- paste(tab$Year, tab$BC)
+tab <- subset(tab, select = -BC)                    # remove BC column
+```
+
+## Creation of a flextable
+The following code creates a simple table with a colorized title and footer with source information.
+
+```{r Wra3,fig.align="center", echo=TRUE, warning = FALSE, message=FALSE}
+source1 <- paste("source: ", url)
+ft <- flextable(tab)
+ft <- theme_vanilla(ft)
+ft <- set_caption(ft, 
+                  caption = as_paragraph(
+                    colorize(as_b("World Population"), color="blue")))
+ft <- add_footer_lines(ft,
+                       values = source1)
+ft <- bg(ft,
+         j="World",
+         bg="yellow",
+         part="all")
+ft
+```
+
+This table contains the population of the world, along with that of its six of the seven continents (excluding Antartica), during various years from 70,000 BC when the world had a population of 15 thousand to 2015 AD with a world population of 7.35 billion.  The world population column is highlighted in yellow.
