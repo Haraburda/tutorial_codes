@@ -1,0 +1,95 @@
+---
+title: "Connecting Routes on a Global Map"
+author: "Scott Haraburda"
+date: "September 13, 2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+
+#####Make sure you load any required packages.
+
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE)
+```
+
+
+## Purpose.
+To portray connection lines between several locations on a map.
+
+
+## Create global map with routes
+The following code creates a plot my connection function to connect two points on a global map using the latitude and longitude of those points. Added to those points are text identifying the names of those locations.
+
+```{r Vis1,fig.align="center", echo=TRUE, warning = FALSE, message=FALSE}
+if (!require("pacman")) install.packages("pacman")
+pacman::p_load(dplyr, geosphere, maps, tidyverse)
+detach("package:purrr", unload=TRUE)
+plot_my_connection <- function( dep_lon, dep_lat, arr_lon, arr_lat, ...){
+   inter <- gcIntermediate(c(dep_lon, dep_lat), 
+                           c(arr_lon, arr_lat), 
+                           n=50, 
+                           addStartEnd=TRUE, 
+                           breakAtDateLine=F)
+   inter=data.frame(inter)
+	diff_of_lon=abs(dep_lon) + abs(arr_lon)
+	if(diff_of_lon > 180){
+		lines(subset(inter, lon>=0), ...)
+		lines(subset(inter, lon<0), ...)
+	}else{
+		lines(inter, ...)
+	}
+}
+#
+#  Create data frame of locations with their latitude and longitudes
+#
+data <- rbind(United.States = c(-95.7129, 37.0902),
+           Japan = c(138.2529, 36.2048),
+           Spain = c(-3.7492, 40.4637),
+           Bazil = c(-51.9253, -14.2350),
+           South.Africa = c(22.9375, -30.5595),
+           Australia = c(133.7751, -25.2744)
+	)  %>% 
+   as.data.frame()
+colnames(data) <- c("long","lat")
+all_pairs <- cbind(t(combn(data$long, 2)), 
+                   t(combn(data$lat, 2))) %>% 
+   as.data.frame()
+colnames(all_pairs)<- c("long1","long2","lat1","lat2")
+#
+# print map with connections.
+#
+par(mar=c(0,0,0,0))
+map('world',
+    col="honeydew3", 
+    fill=TRUE, 
+    bg="white", 
+    lwd=0.05,
+    mar=rep(0,4),
+    border=0, 
+    ylim=c(-80,80) )
+#
+# add every connections
+#
+for(i in 1:nrow(all_pairs)){
+	plot_my_connection(all_pairs$long1[i], 
+	                   all_pairs$lat1[i], 
+	                   all_pairs$long2[i],
+	                   all_pairs$lat2[i], 
+	                   col="red3", 
+	                   lwd=2)
+	}
+# add points and names of cities
+points(x=data$long, 
+       y=data$lat, 
+       col="red4", 
+       cex=2, 
+       pch=20)
+text(rownames(data), 
+     x=data$long, 
+     y=data$lat,  
+     col="slateblue4", 
+     cex=1, 
+     pos=1)
+```
+
+This figure clearly shows the connections between Australia, Brazil, Japan, South Africa, Spain, and the United States. The points could be cities or other locations, provided the latitude and longitude of those points are supplied.
