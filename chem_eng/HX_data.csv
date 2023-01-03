@@ -1,0 +1,8 @@
+parameter,unit,shell_in,shell_out,tube_in,tube_out
+sand,lb/hr,,,500,500
+liquid_water,lb/hr,15000,15000,14335,14344
+vapor_water,lb/hr,,,15,6
+air,lb/hr,,,150,150
+temperature,F,104,140.8,176.5,140
+inlet_pressure,psia,50,,50,
+fouling_coefficient,ft2_hr_R/BTU,0.001,,0.001,

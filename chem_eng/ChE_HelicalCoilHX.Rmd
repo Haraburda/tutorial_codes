@@ -1,0 +1,330 @@
+---
+title: "Helical-Coil Heat Exchanger Design"
+author: "Scott Haraburda"
+date: "July 1, 1995"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+
+#####Make sure you load any required packages.
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE)
+
+```
+
+## Purpose.
+To design a helical-coil heat exchanger, which is useful for three-phase flow, by calculating the tube-side heat-transfer coefficient; calculating the shell-side heat-transfer coefficient; and calculating the heat-exchanger size; calculating the tube-side pressure drop. This contains the script for my 1995 Chemical Engineering article^[Haraburda, Scott (July 1, 1995), "[Three-phase flow? Consider helical-coil heat exchangers](https://www.chemengonline.com/articles.php?file=1985-1999/Vol102/chevol102_num7_68.html)," <u>Chemical Engineering</u> volume 102, number 7 pp. 149-151.].
+
+## Introduction
+In recent years, chemical process plants increasingly encountered processes that required heat exchange in three-phase fluids. A typical application, for example, is heating liquids containing solid catalyst particles and non-condensable gases.
+
+Heat exchangers designed for three-phase flow generally have tubes with large diameters (typically greater than two inches) because solids can build-up inside the tube and lead to plugging. At the same time, in order to keep heat transfer coefficients high, the velocity of the process fluid within the tube should also be high.
+
+As a result, heat exchangers for three-phase flow may require less than five tubes - each having a required linear length that could exceed several hundred feet. Given these limitations, it is obvious that a basic shell-and-tube heat exchanger is not the most practical solution for this purpose.
+
+An alternative to the basic shell-and-tube heat exchanger for three-phase flow is a helical-coil heat exchanger. The helical-coil units offer a number of advantages, including perpendicular, counter-current flow and flexible overall dimensions for the exchanger itself. A design for this type of exchanger was presented by Patil et al. in 1982, primarily for one-phase flow and small-to-medium heat duty^[Patil, R.; Shende, B.; and Ghosh, P. (Dec. 13, 1982), "Designing a Helical-Coil Heat Exchanger," <u>Chemical Engineering</u>.]. Also, this design does not allow one to calculate pressure drop. However, Bayer Corp. has used helical-coil heat exchangers successfully for decades in several of its production plants.
+
+## Design
+As shown in the following three figures, a helical-coil heat exchanger consists of an outer shell, with tubes - typically less than five in number - wrapped around a solid core baffle that runs along the length of the unit. The baffle increases the velocity of the fluid within the shell, thus increasing the heat-transfer coefficient. The following equations are geared for exchangers consisting of one helical tube, but the equations can easily be modified for multiple tubes. 
+
+<div align="center">
+```{r image1,fig.align="center", echo=FALSE}
+knitr::include_graphics("HX1.bmp")
+```
+<i>Figure 1. Side view of helical-coil heat exchanger.</i>
+</div>
+
+<hr style="border:2px solid gray"></hr>
+
+<div align="center">
+```{r image2,fig.align="center", echo=FALSE}
+knitr::include_graphics("HX2.bmp")
+```
+<i>Figure 2. Cross-section view of helical-coil heat exchanger.</i>
+</div>
+
+<hr style="border:2px solid gray"></hr>
+
+<div align="center">
+```{r image3,fig.align="center", echo=FALSE}
+knitr::include_graphics("HX3.bmp")
+```
+<i>Figure 3. Dimension of tubes in helical-coil heat exchanger.</i>
+</div>
+
+<b><u>Nomenclature</u></b>
+
+* A - area (ft^2^)
+* A~f~ - Friedel coefficient
+* Cp - specific heat of fluid (BTU/lb $^\circ$F)
+* D~c~ - coil diameter (ft)
+* D~s~ - inside shell diameter (ft)
+* D~t~ - inside tube diameter (ft)
+* f - friction number
+* Fr - Froude number
+* g - gravitational acceleration (ft/sec^2^)
+* g~c~ - dimenstional constant (32.174 lb ft/lbf sec^2)
+* h - heat transfer coefficient (BTU/ft^2^ hr $^\circ$F)
+* h~d~ - fouling coefficient (ft^2^ hr $^\circ$F/BTU)
+* k - thermal conductivity (BTU ft hr $^\circ$F)
+* L - length (ft)
+* L~tp~ - tube pitch (ft)
+* m - total mass flux (lb/ft^2^ hr)
+* N~c~ - number of coil turns or wraps
+* Nu - Nusselt number
+* P - pressure (psi)
+* Pr - Prandtl number
+* Q - net heat rate transfer (BTU/hr)
+* r~t~ - tube thickness (ft)
+* Re - Reynolds number
+* T - material temperature ($^\circ$F)
+* U - overall heat transfer coefficient (BTU/ft^2^ hr $^\circ$F)
+* v - velocity (ft/hr)
+* V - volumetric flowrate (ft^3^/hr)
+* w - mass flowrate (lb/hr)
+* We - Weber number
+* x - vapor mass ratio
+* $\rho$ - material density (lb/ft^3^)
+* $\sigma$ - surface tension (lbf/ft)
+* $\mu$ - fluid viscosity ('b/ft hr)
+
+<div align="center">subscripts</div>
+
+* ave - average
+* b - bulk
+* core - core
+* HX - heat exchanger
+* i - entering in
+* liq - liquid
+* LM - log-mean
+* o - exiting out
+* s - shell-side material
+* sol - solid
+* t - tube-side material
+* tot - total
+* vap - vapor
+* w - wall
+
+```{r ChE1,fig.align="center", echo=TRUE, warning = FALSE, message=FALSE}
+if (!require("pacman")) install.packages("pacman")
+pacman::p_load(flextable, gdata, ggplot2, tidyverse)
+data1 <- read.csv("HX_data.csv")
+data2 <- read.csv("HX_data2.csv")
+#
+# create variables from data table
+#
+for (i in 1:nrow(data2)) {
+  x <- data2[i,4]
+  mv(from="x", to=data2[i,2])
+}
+FF_fp <- data1[7,3]                                       # fouling coefficient
+FF_fs <- data1[7,5]                                       # fouling coefficient
+data2[27,] <- list("fouling_coefficient_tube", "FF_fp", "ft2_hr_R/BTU", FF_fp)
+data2[28,] <- list("fouling_coefficient_shell", "FF_fs", "ft2_hr_R/BTU", FF_fs)
+ft <- flextable(data2) %>%
+  theme_vanilla() %>%
+  set_caption(caption = as_paragraph(
+    as_b("Helical-Coil HX Example")))
+ft
+```
+<br>
+<hr style="border:2px solid gray"></hr>
+
+## Example
+
+The following example provides an example for calculating this type of heat transfer device.  The material is carbon steel.  The fluid in the tubes is flowing vertically downward.  Using these values, shell-and-tube and helical-coil heat exchangers are designed.
+
+<b><u>Step 1: Calculating the tube-side heat-transfer coefficient.</u></b>
+For multi-phase flow, the approximate density of the fluid is calculated using the following equation (it assumes that there is no reduction in the fluid's volume as a result of mixing the different phases): 
+
+<div align="center">
+$$\begin{equation}
+  \rho_{ave,t} = \frac {w_{tot,t}}{(
+  \frac {w_{sol,t}}{\rho_{sol,t}}+
+  \frac {w_{liq,t}}{\rho_{liq,t}}+
+  \frac{w_{vap,t}}{{\rho_{vap,t}}})}
+\end{equation}$$
+</div>
+
+The velocity of the fluid within the tubes is needed, which is calculated by using the following equation: 
+
+<div align="center">
+$$\begin{equation}
+  v_{t} = \frac {w_{tot,t}}{\rho_{ave,t}\pi(\frac{D_{t}}{2})^2}
+\end{equation}$$
+</div>
+
+Dimensionless correlations are needed to detennine the heat transfer coefficient. The Reynolds Number and Prandtl Number, defined below, are used for calculating the heat transfer coefficient: 
+
+<div align="center">
+$$\begin{equation}
+  Re_{t} = \frac {D_{t}v_{t}\rho_{ave,t}}{\mu_{t}}
+\end{equation}$$
+</div>
+
+<div align="center">
+$$\begin{equation}
+  Pr_{t} = \frac {Cp_{t}\mu_{t}}{k_{t}}
+\end{equation}$$
+</div>
+
+For turbulent flow in circular tubes, the Sieder-Tate equation is recommended^[Crawford, H.B. and Eckes, B.E., eds (1984). <u>Perry's Chemical Engineers' Handbook</u>.McGraw-Hill Book Co: New York, NY. See equation 10-50.].
+
+<div align="center">
+$$\begin{equation}
+  Nu_{t} = 0.023Re_{t}^{0.8}Pr_{t}^{1/3}(\frac {\mu_{b}}{\mu_{w}})^{0.14}
+\end{equation}$$
+</div>
+
+Then, the inside heat transfer coefficient is calculated, using a correction for helical flow^[Jeschke, H. (1925). "Wärmeübergang und Druckverlust in Rohrschlangen. Beiheft," <u>Technische. Mechanik</u> 69. pp.24-28].
+
+<div align="center">
+$$\begin{equation}
+  h_{t} = (\frac {Nu_{t}k_{t}}{D_{t}})(1+3.5\frac{D_{t}}{D_{c}})
+\end{equation}$$
+</div>
+
+
+```{r ChE2,fig.align="center", echo=TRUE, warning = FALSE, message=FALSE}
+F_t <- F_tv + F_tl + F_ts                                 # total flow rate
+rho_t <- F_t / (F_tv/rho_tv + F_tl/rho_tl + F_ts/rho_ts)  # fluid density
+V_t <- 4*F_t / (pi*rho_t*(D_t/12)^2) / 3600               # fluid velocity
+Re_t <- 124.02 * D_t*V_t*rho_t / mu_t                     # Reynold's number
+Pr_t <- 2.419*Cp_t * mu_t / k_ft                          # Prandtl number
+Nu_t <- 0.023*Re_t^0.8*Pr_t^(1/3)*(mu_t/mu_w)^0.14        # Nusselt number
+h_i <- 12*Nu_t*k_ft/D_t * (1+3.5*D_t/D_c)                 # heat transfer coef
+```
+
+The total flow rate is `r format(round(F_t,0), scientific=FALSE, big.mark=',')` pounds per hour. The fluid density is `r round(rho_t,2)` pounds per cubic feet.  The fluid velocity is `r round(V_t,2)` feet per second.  The Reynolds number is `r format(round(Re_t,0), scientific=FALSE, big.mark=',')`.  The Prandtl number is `r round(Pr_t, 3)`. And, the Nusselt number is `r round(Nu_t, 1)`. 
+
+<p style="color:blue"><b>The tube-side heat transfer coefficient is `r round(h_i,2)` BTU/ft^2^hr$^\circ$R.</b></p>
+
+<br>
+<hr style="border:2px solid gray"></hr>
+<br>
+<b><u>Step 2: Calculating the shell-side heat-transfer coefficient.</u></b>
+The shell-side velocity is calculated by subtracting the area of the coiled tube from the core baffle.
+
+<div align="center">
+$$\begin{equation}
+  v_{s} = \frac {4w_{tot,s}}{\rho_{ave,s}\pi[(D_{s}-2(D_{t}+2r_{t})^2-D_{t}^2)]}
+\end{equation}$$
+</div>
+
+Using this velocity, the Reynolds Number is calculated by using the outside diameter of the tube: 
+
+<div align="center">
+$$\begin{equation}
+  Re_{s} = \frac {(D_{t}+2r_{t})v_{s}\rho_{ave,s}}{\mu_{s}}
+\end{equation}$$
+</div>
+
+For turbulent flow normal to a bank of non-staggered circular tubes, the following Nusselt Number is recommended^[Crawford and Eckes. See equation 10-71].
+
+<div align="center">
+$$\begin{equation}
+  Nu_{s} = 0.26Re_{s}^{0.6}Pr_{s}^{1/3}
+\end{equation}$$
+</div>
+
+Thus, the outside heat-transfer coefficient is calculated:
+
+<div align="center">
+$$\begin{equation}
+  h_{s} = \frac {Nu_{s}k_{s}}{D_{t}+2r_{t}}
+\end{equation}$$
+</div>
+
+```{r ChE3,fig.align="center", echo=TRUE, warning = FALSE, message=FALSE}
+F_s <- Q / (Cp_s * (To_s-Ti_s))                           # flow rate
+A_s <- pi*((D_s-2*(D_t+2*r_t))^2 - D_ci^2) / 576          # area
+V_s <- F_s / (3600 * rho_s * A_s)                         # velocity
+Re_s <- 124.02 * (D_t+2*r_t)*V_s*rho_s / mu_s             # Reynold's number
+Pr_s <- 2.419*Cp_s * mu_s / k_fs                          # Prandtl number
+Nu_s <- 0.26*Re_s^0.6*Pr_s^(1/3)                          # Nusselt number
+h_o <- 12 * Nu_s*k_fs / (D_t + 2*r_t)                     # heat transfer coef
+```
+
+The total flow rate is `r format(round(F_s,0), scientific=FALSE, big.mark=',')` pounds per hour. The fluid density is `r round(rho_s,2)` pounds per cubic feet.  The fluid velocity is `r round(V_s,2)` feet per second.  The Reynolds number is `r format(round(Re_s,0), scientific=FALSE, big.mark=',')`.  The Prandtl number is `r round(Pr_s, 3)`. And, the Nusselt number is `r round(Nu_s, 1)`. 
+
+<p style="color:blue"><b>The shell-side heat transfer coefficient is `r round(h_o,2)` BTU/ft^2^hr$^\circ$R.</b></p>
+
+<br>
+<hr style="border:2px solid gray"></hr>
+<br>
+<b><u>Step 3: Calculating the heat-exchanger size.</u></b>
+rior to determining the overall heat-transfer coefficient, one needs to calculate the log mean diameter of the tubes^[Bennett, C.O. and Myers, J.E. (1982) <u>Momentum, Heat, and Mass Transfer</u>, McGraw Hill: New York. see equation 18-9].
+
+<div align="center">
+$$\begin{equation}
+  D_{LM} = \frac {2r_{t}}{ln(\frac{D_{t}+2r_{t}}{D_{t}})}
+\end{equation}$$
+</div>
+
+The overall heat transfer coefficient is needed. It accounts for the tube-side heat-transfer coefficient, and the fouling coefficient, shell-side heat-transfer coefficient and fouling coefficient, and the thermal conductivity of the tube^[Crawford and Eckes. See equation 10-31].
+
+<div align="center">
+$$\begin{equation}
+  U = \frac {1}{\frac{1}{h_{t}}+\frac{r_{t}D_{t}}{k_{t}D_{LM}}}+
+  \frac{D_{t}}{h_{s}(D_{t}+2r_{t})+h_{d,t}+\frac{h_{d,s}D_{t}}{D_{t}+2r_{t}}}
+\end{equation}$$
+</div>
+
+The last parameter needed to calculate the surface area needed inside the heat exchanger is the mean temperature difference. Because this type of exchanger exhibits an actual one-pass counter-current flow, the mean temperature difference is equal to the log mean temperature difference calculation^[Crawford and Eckes. See equation 10-118a].
+
+<div align="center">
+$$\begin{equation}
+  \Delta T_{LM} = \frac {(T_{i,t}-T_{o,s})-(T_{o,t}-T_{i,s})}
+  {ln(\frac{T{i,t}-T{o,s}}{T{o,t}-T_{i,s}})}
+\end{equation}$$
+</div>
+
+The heat transfer surface area is calculated as:
+
+<div align="center">
+$$\begin{equation}
+  A = \frac {Q} {U\Delta T_{LM}}
+\end{equation}$$
+</div>
+
+The linear length of the tube is:
+
+<div align="center">
+$$\begin{equation}
+  L_{p} = \frac {A} {\pi D_{t}}
+\end{equation}$$
+</div>
+
+And, the length of the heat exchanger is calculated as:
+
+<div align="center">
+$$\begin{equation}
+  L_{HX} = \frac {L_{p}L_{t,p}} {\pi D_{c}}
+\end{equation}$$
+</div>
+
+```{r ChE4,fig.align="center", echo=TRUE, warning = FALSE, message=FALSE}
+D_LM <- 2*r_t / log((D_t+2*r_t)/D_t)                      # log mean tube diameter
+U <- 1/h_i + r_t*D_t/(12*k_t*D_LM) + D_t/(h_o*(D_t+2*r_t)) 
+U <- U + FF_fp + FF_fs*D_t/(D_t+2*r_t)
+U <- 1/ U                                                 # overall heat transfer
+T_LM <- (Ti_t-To_s-To_t+Ti_s)/log((Ti_t-To_s)/(To_t-Ti_s))# log mean temperature
+A <- Q / (U * T_LM)                                       # heat exchanger area
+L_p <- 12 * A / (pi*D_t)                                  # tube length
+L_HX <- L_p*D_tp / (pi*D_c)                               # heat exchanger length
+Nc <- 12 * L_HX / D_tp                                    # number of coils
+```
+
+The overall heat transfer coefficient is `r format(round(U,2), scientific=FALSE, big.mark=',')` BTU/ft^2^hr$^\circ$R. The heat exchanger area is `r round(A,2)` square feet.  The tube length is `r round(L_p,0)` feet.  The heat exchanger length is `r format(round(L_HX,0), scientific=FALSE, big.mark=',')` feet.  And, the number of tube coils is `r round(Nc, 0)`. 
+
+<br>
+<hr style="border:2px solid gray"></hr>
+<br>
+
+<div align="center"><b>Comments</b></div>
+
+The overall dimensions of the helical-coil one are much larger that shell-and-tube ones performing the same transfer.  Further, the helical-coil unit is harder to clean, but requires cleaning less often. Therefore, if these disadvantages of the helical-coil exchanger can be tolerated, then the units could prove to be viable alternatives for processing fluids that tend to plug.
+
+
+
+# Notes
