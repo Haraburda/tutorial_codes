@@ -1,7 +1,7 @@
 ---
 title: "Curve-fitting Known Data for Vapor Pressure"
 author: "Scott Haraburda"
-date: "July 13, 1994"
+date: "March 1, 1996"
 output: html_document
 ---
 
@@ -14,7 +14,7 @@ knitr::opts_chunk$set(echo = TRUE, warning = FALSE)
 
 ## Purpose.
 
-To use simple and quick techniques to estimate vapor pressures using known data. This includes a quick estimate using the Antoine equation, and a more rigorous estimation using the Newton_Raphson method.
+To use simple and quick techniques to estimate vapor pressures using known data. This includes a quick estimate using the Antoine equation, and a more rigorous estimation using the Newton_Raphson method. This includes the script for my <i>Chemical Engineering</i> article^[Haraburda, Scott (March 1, 1996), "[Estimating Vapor Pressures of Pure Liquids](https://www.osti.gov/biblio/212242)," <u>Chemical Engineering</u> volume 103, number 3 pp. 135-136.].
 
 ## Vapor Pressure
 Vapor pressures for pure liquid chemicals are important for designing equipment intended for separation of liquid mixtures.  The following method provides a useful way to develop an equation for predicting vapor pressures over a range of different temperatures.  This method will require using known vapor pressure points for different temperatures.  Although one vapor pressure equation model will be demonstrated, this method could be used and adjusted to develop the equation for any temperature dependent model.  The equation model being used will be the Antoine equation, which typically provides a good correlation with experimental, or measured, data.  This equation has the following form:
@@ -361,11 +361,9 @@ for (i in 1:M){
 }
 SE_estimate <- (SE_estimate/(M-1))^0.5
 SE_NR <- (SE_NR/(M-1))^0.5
-print(paste("Standard Error for the quick estimate is ",
-            round(SE_estimate,3),
-            ", whereas the Standard Error for the Newton_Rhaphson method is ",
-            round(SE_NR,3)))
 ```
+
+<p style="color:blue"><b>The Standard Error for the quick estimate is `r round(SE_estimate,3)`, whereas the Standard Error for the Newton_Rhaphson method is `r round(SE_NR,3)`.</b></p>
 
 As seen from the above error results,  the rigorous method provides a slightly more accurate representation of the actual data.  However, the estimation method values appear to be quite accurate.  The rigorous method provides a better representation of the data in that it used all of the known ones in its calculations; whereas, the estimation method only used three data points.
 
